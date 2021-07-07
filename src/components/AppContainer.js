@@ -6,4 +6,8 @@ export const AppContainer = styled.main`
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+
+	@media (max-width: 768px) {
+		height: auto;
+	}
 `;
