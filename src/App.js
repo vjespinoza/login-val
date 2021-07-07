@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+//Components
+import { AppContainer } from "./components/AppContainer";
+import { FormsContainer } from "./components/Forms/FormsContainer";
+import { FormLogin } from "./components/Forms/Login/FormLogin";
+import { FormSignup } from "./components/Forms/Signup/FormSignup";
+
+//Styles
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme";
+import { GlobalStyles } from "./globalStyles";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<ThemeProvider theme={theme}>
+				<GlobalStyles />
+				<AppContainer>
+					<FormsContainer>
+						<FormSignup />
+						<FormLogin />
+					</FormsContainer>
+				</AppContainer>
+			</ThemeProvider>
+		</>
+	);
 }
 
 export default App;
