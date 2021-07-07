@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const FormsContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	width: 45rem;
+	max-width: 45rem;
+	min-width: 20rem;
 	box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 	position: relative;
 
