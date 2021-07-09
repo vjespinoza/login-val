@@ -11,6 +11,6 @@ export const Form = styled.form`
 	@media (max-width: 768px) {
 		display: ${(props) => (props.isActive ? "flex" : "none")};
 		align-self: center;
-		padding: 1rem;
+		height: 100%;
 	}
 `;

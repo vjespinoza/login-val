@@ -34,7 +34,9 @@ export const FormsContainer = styled.div`
 
 	@media (max-width: 768px) {
 		flex-direction: column;
-		margin: 50px 0;
+		max-width: 100vw;
+		width: 100vw;
+		height: 100vh;
 
 		&::before {
 			display: none;
