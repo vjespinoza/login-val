@@ -6,7 +6,7 @@ import { FormTitle } from "../FormTitle";
 import useFormValidate from "../../../hooks/useFormValidate";
 
 export const FormSignup = () => {
-	const { data, handleChange, handleSubmnit } = useFormValidate();
+	const { data, handleChange, handleSubmnit, handleClick } = useFormValidate();
 
 	return (
 		<Form onSubmit={(e) => handleSubmnit(e)}>
@@ -43,7 +43,7 @@ export const FormSignup = () => {
 				type="password"
 				placeholder="Confirmar contraseña"
 			/>
-			<Button primary type="submit">
+			<Button data-btn="signup" onClick={(e) => handleClick(e)} primary type="submit">
 				Registrarse
 			</Button>
 		</Form>

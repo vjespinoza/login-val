@@ -7,7 +7,7 @@ import { FormTitle } from "../FormTitle";
 import useFormValidate from "../../../hooks/useFormValidate";
 
 export const FormLogin = () => {
-	const { data, handleChange, handleSubmnit } = useFormValidate();
+	const { data, handleChange, handleSubmnit, handleClick } = useFormValidate();
 
 	return (
 		<Form gradient onSubmit={(e) => handleSubmnit(e)}>
@@ -28,7 +28,9 @@ export const FormLogin = () => {
 				type="password"
 				placeholder="Contraseña"
 			/>
-			<Button type="submit">Iniciar Sesión</Button>
+			<Button data-btn="login" onClick={(e) => handleClick(e)} type="submit">
+				Iniciar Sesión
+			</Button>
 		</Form>
 	);
 };

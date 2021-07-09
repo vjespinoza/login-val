@@ -1,11 +1,9 @@
 //Import sweet alert
 import swal from "sweetalert";
 
-export const createModal = (errors, data) => {
+export const errorMessage = (errors) => {
 	let list = Object.values(errors);
 	let text = "";
-
-	console.log(Object.values(data));
 
 	if (errors) {
 		for (let item of list) {
@@ -16,16 +14,22 @@ export const createModal = (errors, data) => {
 			text: text,
 			icon: "error",
 		});
-	} else {
-		alert(111);
+	}
+};
+
+export const successMessage = (data) => {
+	if (Object.values(data).every((item) => item !== "") && data.form === "signup") {
+		swal({
+			title: "Felicidades!",
+			text: "Registro creado exitosamente",
+			icon: "success",
+		});
 	}
 
-	// console.log(Object.values(errors).length);
-	// console.log(errors.length);
-	if (Object.values(data)[1] !== "") {
+	if (Object.values(data)[2] !== "" && Object.values(data)[3] !== "" && data.form === "login") {
 		swal({
 			title: "Bienvenido!",
-			text: "Registro creado exitosamente",
+			text: "Has ingresado a tu cuenta",
 			icon: "success",
 		});
 	}
