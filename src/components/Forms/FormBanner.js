@@ -11,6 +11,10 @@ export const BannerContainer = styled.div`
 	bottom: ${(props) => (props.isActive ? 0 : "100%")};
 	left: ${(props) => (props.rigth ? "50%" : 0)};
 	transition: bottom ease-in-out 200ms;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 `;
 
 export const BannerImage = styled.img`

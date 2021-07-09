@@ -7,11 +7,11 @@ import { FormFooter } from "../FormFooter";
 //Import custom hook
 import useFormValidate from "../../../hooks/useFormValidate";
 
-export const FormLogin = ({ handleIsActive }) => {
+export const FormLogin = ({ isActive, handleIsActive }) => {
 	const { data, handleChange, handleSubmnit, handleClick } = useFormValidate();
 
 	return (
-		<Form gradient onSubmit={(e) => handleSubmnit(e)}>
+		<Form isActive={isActive} gradient onSubmit={(e) => handleSubmnit(e)}>
 			<FormTitle ligth>Iniciar sesión</FormTitle>
 			<Input
 				value={data.email}

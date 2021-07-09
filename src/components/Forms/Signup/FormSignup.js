@@ -6,11 +6,11 @@ import { FormFooter } from "../FormFooter";
 //Import custom hook
 import useFormValidate from "../../../hooks/useFormValidate";
 
-export const FormSignup = ({ handleIsActive }) => {
+export const FormSignup = ({ handleIsActive, isActive }) => {
 	const { data, handleChange, handleSubmnit, handleClick } = useFormValidate();
 
 	return (
-		<Form onSubmit={(e) => handleSubmnit(e)}>
+		<Form isActive={isActive} onSubmit={(e) => handleSubmnit(e)}>
 			<FormTitle>Registrarse</FormTitle>
 			<Input
 				value={data.name}
