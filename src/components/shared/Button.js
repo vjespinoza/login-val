@@ -5,13 +5,13 @@ export const Button = styled.button`
 	text-transform: uppercase;
 	background-color: ${(props) =>
 		props.primary ? props.theme.colors.primary : props.theme.colors.secondary};
-	padding: 1rem 1.2rem;
+	padding: 0.8rem 1rem;
 	max-width: 100%;
 	outline: none;
 	border: none;
 	color: white;
 	font-weight: bold;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	cursor: pointer;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 	margin-top: 1rem;

@@ -7,6 +7,7 @@ export const FormsContainer = styled.div`
 	min-width: 20rem;
 	box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 	position: relative;
+	overflow: hidden;
 
 	&::before {
 		content: "chevron_right";
@@ -17,14 +18,18 @@ export const FormsContainer = styled.div`
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		transform: ${(props) =>
+			props.isActive
+				? "translate(-50%, -50%) rotate(0.5turn)"
+				: "translate(-50%, -50%) rotate(0turn)"};
 		width: 50px;
 		height: 50px;
 		display: block;
 		fill: blueviolet;
 		border-radius: 500px;
 		box-shadow: inset 200px 200px #e5e5e5, 1px 1px 4px 2px rgba(0, 0, 0, 0.2);
-		cursor: pointer;
+		z-index: 100;
+		transition: transform ease-in-out 200ms;
 	}
 
 	@media (max-width: 768px) {

@@ -2,10 +2,11 @@ import { Form } from "../../shared/Form";
 import { Input } from "../../shared/Input";
 import { Button } from "../../shared/Button";
 import { FormTitle } from "../FormTitle";
+import { FormFooter } from "../FormFooter";
 //Import custom hook
 import useFormValidate from "../../../hooks/useFormValidate";
 
-export const FormSignup = () => {
+export const FormSignup = ({ handleIsActive }) => {
 	const { data, handleChange, handleSubmnit, handleClick } = useFormValidate();
 
 	return (
@@ -46,6 +47,12 @@ export const FormSignup = () => {
 			<Button data-btn="signup" onClick={(e) => handleClick(e)} primary type="submit">
 				Registrarse
 			</Button>
+			<FormFooter>
+				<p>
+					Ya tienes una cuenta? Inicia sesión{" "}
+					<span onClick={() => handleIsActive()}>aquí</span>.
+				</p>
+			</FormFooter>
 		</Form>
 	);
 };
