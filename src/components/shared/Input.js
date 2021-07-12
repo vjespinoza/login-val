@@ -15,7 +15,7 @@ export const Input = styled.input`
 	color: ${(props) => (props.ligth ? "white" : props.theme.colors.font)};
 
 	&::placeholder {
-		color: transparent;
+		visibility: hidden;
 	}
 
 	&:focus {

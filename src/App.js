@@ -16,15 +16,39 @@ import { GlobalStyles } from "./globalStyles";
 
 function App() {
 	const [isActive, setIsActive] = useState(false);
-	const [showPassword, setShowPassword] = useState(false);
+	const [showPassword, setShowPassword] = useState({
+		newPassword: false,
+		confirmPassword: false,
+		loginPassword: false,
+	});
 
 	const handleIsActive = () => {
 		setIsActive((isActive) => !isActive);
 	};
 
 	const handleShowPassword = (e) => {
-		setShowPassword((showPassword) => !showPassword);
-		console.log(e.target);
+		const { pwd } = e.target.dataset;
+		if (pwd === "new-password") {
+			setShowPassword(
+				!showPassword.newPassword
+					? { ...showPassword, newPassword: true }
+					: { ...showPassword, newPassword: false }
+			);
+		}
+		if (pwd === "confirm-password") {
+			setShowPassword(
+				!showPassword.confirmPassword
+					? { ...showPassword, confirmPassword: true }
+					: { ...showPassword, confirmPassword: false }
+			);
+		}
+		if (pwd === "login-password") {
+			setShowPassword(
+				!showPassword.loginPassword
+					? { ...showPassword, loginPassword: true }
+					: { ...showPassword, loginPassword: false }
+			);
+		}
 	};
 
 	return (

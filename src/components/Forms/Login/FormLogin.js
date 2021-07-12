@@ -33,15 +33,19 @@ export const FormLogin = ({ isActive, handleIsActive, showPassword, handleShowPa
 					onChange={(e) => handleChange(e)}
 					ligth
 					name="password"
-					type={showPassword ? "text" : "password"}
+					type={showPassword.loginPassword ? "text" : "password"}
 					placeholder="Contraseña"
 				/>
 				<InputLabel ligth>Contraseña</InputLabel>
-				<InputIcon ligth onClick={() => handleShowPassword()}>
-					{showPassword ? (
-						<span className="material-icons">visibility_off</span>
+				<InputIcon ligth onClick={(e) => handleShowPassword(e)}>
+					{showPassword.loginPassword ? (
+						<span data-pwd="login-password" className="material-icons">
+							visibility_off
+						</span>
 					) : (
-						<span className="material-icons">visibility</span>
+						<span data-pwd="login-password" className="material-icons">
+							visibility
+						</span>
 					)}
 				</InputIcon>
 			</InputGroup>

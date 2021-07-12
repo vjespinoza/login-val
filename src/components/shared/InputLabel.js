@@ -9,7 +9,6 @@ export const InputLabel = styled.label`
 	left: 5px;
 	transition: all ease-in-out 200ms;
 	transform-origin: left;
-	transform-origin: left;
 	cursor: text;
 	pointer-events: none;
 `;

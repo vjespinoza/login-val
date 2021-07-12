@@ -44,15 +44,19 @@ export const FormSignup = ({ handleIsActive, isActive, showPassword, handleShowP
 					name="password"
 					onChange={(e) => handleChange(e)}
 					primary
-					type={showPassword ? "text" : "password"}
+					type={showPassword.newPassword ? "text" : "password"}
 					placeholder="Contraseña"
 				/>
 				<InputLabel>Contraseña</InputLabel>
 				<InputIcon onClick={(e) => handleShowPassword(e)}>
-					{showPassword ? (
-						<span className="material-icons">visibility_off</span>
+					{showPassword.newPassword ? (
+						<span data-pwd="new-password" className="material-icons">
+							visibility_off
+						</span>
 					) : (
-						<span className="material-icons">visibility</span>
+						<span data-pwd="new-password" className="material-icons">
+							visibility
+						</span>
 					)}
 				</InputIcon>
 			</InputGroup>
@@ -62,15 +66,19 @@ export const FormSignup = ({ handleIsActive, isActive, showPassword, handleShowP
 					name="password2"
 					onChange={(e) => handleChange(e)}
 					primary
-					type={showPassword ? "text" : "password"}
+					type={showPassword.confirmPassword ? "text" : "password"}
 					placeholder="Confirmar contraseña"
 				/>
 				<InputLabel>Confirmar Contraseña</InputLabel>
 				<InputIcon onClick={(e) => handleShowPassword(e)}>
-					{showPassword ? (
-						<span className="material-icons">visibility_off</span>
+					{showPassword.confirmPassword ? (
+						<span data-pwd="confirm-password" className="material-icons">
+							visibility_off
+						</span>
 					) : (
-						<span className="material-icons">visibility</span>
+						<span data-pwd="confirm-password" className="material-icons">
+							visibility
+						</span>
 					)}
 				</InputIcon>
 			</InputGroup>
