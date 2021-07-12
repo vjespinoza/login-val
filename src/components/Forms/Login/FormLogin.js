@@ -4,31 +4,47 @@ import { Input } from "../../shared/Input";
 import { Button } from "../../shared/Button";
 import { FormTitle } from "../FormTitle";
 import { FormFooter } from "../FormFooter";
+import { InputLabel } from "../../shared/InputLabel";
+import { InputIcon } from "../../shared/InputIcon";
+import { InputGroup } from "../../shared/InputGroup";
 //Import custom hook
 import useFormValidate from "../../../hooks/useFormValidate";
 
-export const FormLogin = ({ isActive, handleIsActive }) => {
+export const FormLogin = ({ isActive, handleIsActive, showPassword, handleShowPassword }) => {
 	const { data, handleChange, handleSubmnit, handleClick } = useFormValidate();
 
 	return (
 		<Form isActive={isActive} gradient onSubmit={(e) => handleSubmnit(e)}>
 			<FormTitle ligth>Iniciar sesión</FormTitle>
-			<Input
-				value={data.email}
-				onChange={(e) => handleChange(e)}
-				ligth
-				name="email"
-				type="email"
-				placeholder="Correo"
-			/>
-			<Input
-				value={data.password}
-				onChange={(e) => handleChange(e)}
-				ligth
-				name="password"
-				type="password"
-				placeholder="Contraseña"
-			/>
+			<InputGroup>
+				<Input
+					value={data.email}
+					onChange={(e) => handleChange(e)}
+					ligth
+					name="email"
+					type="email"
+					placeholder="Correo"
+				/>
+				<InputLabel ligth>Email</InputLabel>
+			</InputGroup>
+			<InputGroup>
+				<Input
+					value={data.password}
+					onChange={(e) => handleChange(e)}
+					ligth
+					name="password"
+					type={showPassword ? "text" : "password"}
+					placeholder="Contraseña"
+				/>
+				<InputLabel ligth>Contraseña</InputLabel>
+				<InputIcon ligth onClick={() => handleShowPassword()}>
+					{showPassword ? (
+						<span className="material-icons">visibility_off</span>
+					) : (
+						<span className="material-icons">visibility</span>
+					)}
+				</InputIcon>
+			</InputGroup>
 			<Button data-btn="login" onClick={(e) => handleClick(e)} type="submit">
 				Iniciar Sesión
 			</Button>

@@ -16,9 +16,15 @@ import { GlobalStyles } from "./globalStyles";
 
 function App() {
 	const [isActive, setIsActive] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 
 	const handleIsActive = () => {
 		setIsActive((isActive) => !isActive);
+	};
+
+	const handleShowPassword = (e) => {
+		setShowPassword((showPassword) => !showPassword);
+		console.log(e.target);
 	};
 
 	return (
@@ -30,6 +36,8 @@ function App() {
 						<FormSignup
 							isActive={!isActive}
 							handleIsActive={handleIsActive}
+							showPassword={showPassword}
+							handleShowPassword={handleShowPassword}
 						/>
 						<BannerContainer isActive={isActive} rigth>
 							<BannerImage src={svg1} />
@@ -37,6 +45,8 @@ function App() {
 						<FormLogin
 							isActive={isActive}
 							handleIsActive={handleIsActive}
+							showPassword={showPassword}
+							handleShowPassword={handleShowPassword}
 						/>
 						<BannerContainer isActive={!isActive}>
 							<BannerImage src={svg2} />
