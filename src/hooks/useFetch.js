@@ -17,7 +17,7 @@ const useFetch = () => {
 
     const POST_Request = async () => {
         let request = await api.post("/users", {
-            email: "poporot@reqres.in",
+            email: "eve.holt@reqres.in",
             password: "cityslicka",
         });
         let response = request.data;
