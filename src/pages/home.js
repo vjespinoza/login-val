@@ -1,4 +1,4 @@
-const Home = () => {
+const Home = ({ POST_Data }) => {
     return (
         <>
             <h1>Home page</h1>

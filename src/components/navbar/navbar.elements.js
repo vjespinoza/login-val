@@ -10,6 +10,7 @@ export const NavbarContainer = styled.nav`
 
     & button {
         margin-top: 0;
+        font-size: 65%;
     }
 `;
 
@@ -23,7 +24,7 @@ export const NavbarList = styled.ul`
 
 export const NavbarListItem = styled.li`
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     margin-right: 40px;
     line-height: 2;
 

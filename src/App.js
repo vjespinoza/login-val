@@ -16,13 +16,12 @@ import useFetch from "./hooks/useFetch";
 
 function App() {
     const [isActive, setIsActive] = useState(false);
-    const { GET_Data, POST_Data } = useFetch();
+    const { POST_Data } = useFetch();
 
     const handleIsActive = () => {
         setIsActive((isActive) => !isActive);
     };
 
-    // console.log(GET_Data);
     console.log(POST_Data);
 
     return (
@@ -36,7 +35,7 @@ function App() {
                             <Route exact path="/">
                                 <Home />
                             </Route>
-                            <Route exact path="/login">
+                            <Route path="/login">
                                 <LoginPage
                                     isActive={isActive}
                                     handleIsActive={handleIsActive}
