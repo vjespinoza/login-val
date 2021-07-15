@@ -10,19 +10,21 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import { GlobalStyles } from "./styles/globalStyles";
 //React Router
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-//Custom hook
-import useFetch from "./hooks/useFetch";
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Redirect,
+} from "react-router-dom";
 
 function App() {
     const [isActive, setIsActive] = useState(false);
-    const { POST_Data } = useFetch();
+    const [auth, setAuth] = useState(false);
+    const [user, setUser] = useState("");
 
     const handleIsActive = () => {
         setIsActive((isActive) => !isActive);
     };
-
-    console.log(POST_Data);
 
     return (
         <>
@@ -33,13 +35,23 @@ function App() {
                     <Switch>
                         <AppContainer>
                             <Route exact path="/">
-                                <Home />
+                                {auth ? (
+                                    <Redirect to="/home" />
+                                ) : (
+                                    <LoginPage
+                                        isActive={isActive}
+                                        handleIsActive={handleIsActive}
+                                        setAuth={setAuth}
+                                        setUser={setUser}
+                                    />
+                                )}
                             </Route>
-                            <Route path="/login">
-                                <LoginPage
-                                    isActive={isActive}
-                                    handleIsActive={handleIsActive}
-                                />
+                            <Route path="/home">
+                                {!auth ? (
+                                    <Redirect to="/" />
+                                ) : (
+                                    <Home user={user} />
+                                )}
                             </Route>
                         </AppContainer>
                     </Switch>

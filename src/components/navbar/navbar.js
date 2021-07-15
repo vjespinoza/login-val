@@ -7,10 +7,10 @@ const Navbar = () => {
         <NavbarContainer>
             <NavbarList>
                 <NavbarListItem>
-                    <Link to="/">Home</Link>
+                    <Link to="/home">Home</Link>
                 </NavbarListItem>
                 <NavbarListItem>
-                    <Link to="/login">
+                    <Link to="/">
                         <Button>Iniciar Sesión</Button>
                     </Link>
                 </NavbarListItem>

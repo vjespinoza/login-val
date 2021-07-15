@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 //Import components
 import { Form } from "../../../shared/Form";
 import { Input } from "../../../shared/Input";
@@ -15,9 +16,20 @@ export const FormLogin = ({
     handleIsActive,
     showPassword,
     handleShowPassword,
+    setAuth,
+    setUser,
 }) => {
-    const { data, handleChange, handleSubmnit, handleClick } =
+    const { data, isLogged, handleChange, handleSubmnit, handleClick } =
         useFormValidate();
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (isLogged) {
+                setAuth(true);
+                setUser(data.email);
+            }
+        }, 1000);
+    });
 
     return (
         <Form isActive={isActive} gradient onSubmit={(e) => handleSubmnit(e)}>

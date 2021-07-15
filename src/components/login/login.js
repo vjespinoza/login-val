@@ -10,7 +10,7 @@ import svg2 from "../../assets/svg/Signup.svg";
 //Custom hook
 import useShowPassword from "../../hooks/useShowPassword";
 
-const Login = ({ isActive, handleIsActive }) => {
+const Login = ({ isActive, handleIsActive, setAuth, setUser }) => {
     const { showPassword, handleShowPassword } = useShowPassword();
 
     return (
@@ -29,6 +29,8 @@ const Login = ({ isActive, handleIsActive }) => {
                 handleIsActive={handleIsActive}
                 showPassword={showPassword}
                 handleShowPassword={handleShowPassword}
+                setAuth={setAuth}
+                setUser={setUser}
             />
             <BannerContainer isActive={!isActive}>
                 <BannerImage src={svg2} />

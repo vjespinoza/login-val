@@ -1,8 +1,8 @@
-const Home = ({ POST_Data }) => {
+const Home = ({ user }) => {
     return (
         <>
             <h1>Home page</h1>
-            <h3>Bienvenido username</h3>
+            <h3>Bienvenido {user}</h3>
         </>
     );
 };
