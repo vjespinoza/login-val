@@ -1,0 +1,111 @@
+[
+    {
+        "id": "RS-001",
+        "name": "super tenis nike",
+        "model": "NM-7569",
+        "price": 121.99,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "../../assets/img/Nike-Men-1.jpg",
+        "gender_type": "men" 
+
+    },
+    {
+        "id": "RS-002",
+        "name": "triple mega runner",
+        "model": "NM-1541",
+        "price": 109.99,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "Nike-Men-2.jpg",
+        "gender_type": "men" 
+
+    },
+    {
+        "id": "RS-003",
+        "name": "ultra wow deportivo",
+        "model": "NM-5408",
+        "price": 89.75,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "Nike-Men-3.jpg",
+        "gender_type": "men" 
+
+    },
+    {
+        "id": "RS-004",
+        "name": "zapatilla deportiva zero+",
+        "model": "NM-7185",
+        "price": 112.45,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "Nike-Men-4.jpg",
+        "gender_type": "men" 
+
+    },
+    {
+        "id": "RS-005",
+        "name": "kilowat super tenis",
+        "model": "NM-0804",
+        "price": 75.89,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "Nike-Men-5.jpg",
+        "gender_type": "men" 
+
+    },
+    {
+        "id": "RS-006",
+        "name": "relampago corredor",
+        "model": "NW-9534",
+        "price": 115.79,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "Nike-Women-1.jpg",
+        "gender_type": "women" 
+
+    },
+    {
+        "id": "RS-007",
+        "name": "zapatilla lady runner",
+        "model": "NW-0484",
+        "price": 99.99,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "Nike-Women-2.jpg",
+        "gender_type": "women" 
+
+    },
+    {
+        "id": "RS-008",
+        "name": "tenis ultra shadow+",
+        "model": "NW-8735",
+        "price": 101.00,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "Nike-Women-3.jpg",
+        "gender_type": "women" 
+
+    },
+    {
+        "id": "RS-009",
+        "name": "speed fast runnerz",
+        "model": "NW",
+        "price": 124.99,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "Nike-Women-4.jpg",
+        "gender_type": "women" 
+
+    },
+    {
+        "id": "RS-010",
+        "name": "tenis girl flamerz",
+        "model": "NW-2044",
+        "price": 89.50,
+        "seller": "Nike",
+        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
+        "image": "Nike-Women-5.jpg",
+        "gender_type": "women" 
+    }
+]

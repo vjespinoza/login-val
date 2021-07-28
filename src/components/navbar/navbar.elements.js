@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavbarContainer = styled.nav`
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-content: center;
     padding: 0 5vw;
     height: 65px;
@@ -18,11 +18,11 @@ export const NavbarList = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
-    list-style: none;
     height: 100%;
 `;
 
 export const NavbarListItem = styled.li`
+    list-style: none;
     font-weight: 500;
     font-size: 0.9rem;
     margin-right: 40px;
@@ -31,4 +31,10 @@ export const NavbarListItem = styled.li`
     &:last-child {
         margin-right: 0;
     }
+`;
+
+export const NavbarLogo = styled.img`
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
 `;

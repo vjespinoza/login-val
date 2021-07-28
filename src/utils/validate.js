@@ -1,8 +1,8 @@
 export const validate = (data, setIsValidated) => {
     const errors = {};
 
-    const nameVal = /^[a-z ,.'-]+$/gi;
-    const emailVal = /\S+@\S+\.\S+/g;
+    const nameVal = /^[\u00C0-\u00FFa-z ,.'-]+$/gi;
+    const emailVal = /\S+@\S+\.[a-z]+/g;
 
     //Validates empty name input field
     if (!data.name && data.form === "signup") {
