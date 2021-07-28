@@ -4,7 +4,7 @@ import { validate } from "../utils/validate";
 import { errorMessage, successMessage } from "../utils/createModal";
 import { fetchLogin } from "../utils/fetchLogin";
 
-const useFormValidate = () => {
+const useFormValidate = ({ isValidated, setIsValidated, auth, setAuth }) => {
     const [data, setData] = useState({
         form: "",
         name: "",
@@ -14,10 +14,6 @@ const useFormValidate = () => {
     });
 
     const [error, setError] = useState({});
-
-    const [isValidated, setIsValidated] = useState(false);
-
-    const [isLogged, setIsLogged] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,7 +25,7 @@ const useFormValidate = () => {
 
     const handleSubmnit = (e) => {
         e.preventDefault();
-        setError(validate(data, setIsValidated));
+        setError(validate(data, isValidated, setIsValidated));
     };
 
     const handleClick = (e) => {
@@ -44,12 +40,13 @@ const useFormValidate = () => {
         if (Object.values(error).length > 0) {
             errorMessage(error);
         } else if (Object.values(error).length === 0) {
-            fetchLogin(data, isValidated, setIsLogged);
-            successMessage(data, isValidated, isLogged);
+            console.log("no errors");
+            fetchLogin(data, isValidated, setAuth);
+            successMessage(data, isValidated);
         }
-    }, [error, isLogged]);
+    }, [error]);
 
-    return { data, error, isLogged, handleChange, handleSubmnit, handleClick };
+    return { data, error, handleChange, handleSubmnit, handleClick };
 };
 
 export default useFormValidate;

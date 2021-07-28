@@ -14,22 +14,28 @@ import useFormValidate from "../../../../hooks/useFormValidate";
 export const FormLogin = ({
     isActive,
     handleIsActive,
+    isValidated,
+    setIsValidated,
     showPassword,
     handleShowPassword,
+    auth,
     setAuth,
-    setUser,
 }) => {
-    const { data, isLogged, handleChange, handleSubmnit, handleClick } =
-        useFormValidate();
-
-    useEffect(() => {
-        setTimeout(() => {
-            if (isLogged) {
-                setAuth(true);
-                setUser(data.email);
-            }
-        }, 1000);
+    const { data, handleChange, handleSubmnit, handleClick } = useFormValidate({
+        isValidated,
+        setIsValidated,
+        auth,
+        setAuth,
     });
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         if (auth) {
+    //             setAuth(true);
+    //             setUser(data.email);
+    //         }
+    //     }, 1000);
+    // });
 
     return (
         <Form isActive={isActive} gradient onSubmit={(e) => handleSubmnit(e)}>

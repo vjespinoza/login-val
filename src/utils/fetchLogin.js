@@ -1,7 +1,7 @@
 import axios from "axios";
 import swal from "sweetalert";
 
-export const fetchLogin = (data, isValidated, setIsLogged) => {
+export const fetchLogin = (data, isValidated, setAuth) => {
     const api = axios.create({
         baseURL: "https://reqres.in/api/login",
     });
@@ -12,8 +12,10 @@ export const fetchLogin = (data, isValidated, setIsLogged) => {
                 email: data.email,
                 password: data.password,
             });
-            let response = request.data;
-            setIsLogged(true);
+            let response = request.data.token;
+
+            setAuth({ token: response, user: data.email });
+
             swal({
                 title: "Bienvenido!",
                 text: "Has ingresado a tu cuenta",
@@ -31,7 +33,7 @@ export const fetchLogin = (data, isValidated, setIsLogged) => {
         }
     };
 
-    if (isValidated && data.form === "login" && data.email !== "") {
+    if (isValidated.loginForm && data.email !== "") {
         POST_Request();
     }
 };

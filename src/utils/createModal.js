@@ -18,7 +18,7 @@ export const errorMessage = (errors) => {
 };
 
 export const successMessage = (data, isValidated) => {
-    if (isValidated && data.form === "signup") {
+    if (isValidated.signupForm) {
         swal({
             title: "Felicidades!",
             text: "Registro creado exitosamente",

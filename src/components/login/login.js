@@ -10,7 +10,14 @@ import svg2 from "../../assets/svg/Signup.svg";
 //Custom hook
 import useShowPassword from "../../hooks/useShowPassword";
 
-const Login = ({ isActive, handleIsActive, setAuth, setUser }) => {
+const Login = ({
+    isActive,
+    handleIsActive,
+    isValidated,
+    setIsValidated,
+    auth,
+    setAuth,
+}) => {
     const { showPassword, handleShowPassword } = useShowPassword();
 
     return (
@@ -18,6 +25,8 @@ const Login = ({ isActive, handleIsActive, setAuth, setUser }) => {
             <FormSignup
                 isActive={!isActive}
                 handleIsActive={handleIsActive}
+                isValidated={isValidated}
+                setIsValidated={setIsValidated}
                 showPassword={showPassword}
                 handleShowPassword={handleShowPassword}
             />
@@ -27,10 +36,12 @@ const Login = ({ isActive, handleIsActive, setAuth, setUser }) => {
             <FormLogin
                 isActive={isActive}
                 handleIsActive={handleIsActive}
+                isValidated={isValidated}
+                setIsValidated={setIsValidated}
                 showPassword={showPassword}
                 handleShowPassword={handleShowPassword}
+                auth={auth}
                 setAuth={setAuth}
-                setUser={setUser}
             />
             <BannerContainer isActive={!isActive}>
                 <BannerImage src={svg2} />

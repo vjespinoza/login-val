@@ -1,4 +1,4 @@
-export const validate = (data, setIsValidated) => {
+export const validate = (data, isValidated, setIsValidated) => {
     const errors = {};
 
     const nameVal = /^[\u00C0-\u00FFa-z ,.'-]+$/gi;
@@ -37,8 +37,10 @@ export const validate = (data, setIsValidated) => {
         errors.password2 = "Las contraseñas no coinciden";
     }
 
-    if (Object.entries(errors).length === 0) {
-        setIsValidated(true);
+    if (Object.entries(errors).length === 0 && data.form === "signup") {
+        setIsValidated({ ...isValidated, signupForm: true });
+    } else if (Object.entries(errors).length === 0 && data.form === "login") {
+        setIsValidated({ ...isValidated, loginForm: true });
     }
 
     return errors;

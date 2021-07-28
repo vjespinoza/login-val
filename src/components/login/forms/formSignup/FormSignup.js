@@ -13,11 +13,15 @@ import useFormValidate from "../../../../hooks/useFormValidate";
 export const FormSignup = ({
     handleIsActive,
     isActive,
+    isValidated,
+    setIsValidated,
     showPassword,
     handleShowPassword,
 }) => {
-    const { data, handleChange, handleSubmnit, handleClick } =
-        useFormValidate();
+    const { data, handleChange, handleSubmnit, handleClick } = useFormValidate({
+        isValidated,
+        setIsValidated,
+    });
 
     return (
         <Form isActive={isActive} onSubmit={(e) => handleSubmnit(e)}>

@@ -1,11 +1,11 @@
-import ProductList from "../components/store/productList";
+// import ProductList from "../components/store/productList";
 
 const Home = ({ user }) => {
     return (
         <>
             <h1>Home page</h1>
             <h3>Bienvenido {user}</h3>
-            <ProductList />
+            {/* <ProductList /> */}
         </>
     );
 };

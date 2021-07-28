@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //Components
 import { AppContainer } from "./components/AppContainer";
 import Navbar from "./components/navbar/navbar";
@@ -19,8 +19,21 @@ import {
 
 function App() {
     const [isActive, setIsActive] = useState(false);
-    const [auth, setAuth] = useState(false);
-    const [user, setUser] = useState("");
+    const [isValidated, setIsValidated] = useState({
+        loginForm: false,
+        signupForm: false,
+    });
+    const [auth, setAuth] = useState({
+        token: sessionStorage.ACCESS_TOKEN
+            ? JSON.parse(sessionStorage.ACCESS_TOKEN)
+            : "",
+        user: sessionStorage.USER ? JSON.parse(sessionStorage.USER) : "",
+    });
+
+    useEffect(() => {
+        sessionStorage.setItem("ACCESS_TOKEN", JSON.stringify(auth.token));
+        sessionStorage.setItem("USER", JSON.stringify(auth.user));
+    }, [auth]);
 
     const handleIsActive = () => {
         setIsActive((isActive) => !isActive);
@@ -35,22 +48,24 @@ function App() {
                     <Switch>
                         <AppContainer>
                             <Route exact path="/">
-                                {auth ? (
+                                {auth.token ? (
                                     <Redirect to="/home" />
                                 ) : (
                                     <LoginPage
                                         isActive={isActive}
                                         handleIsActive={handleIsActive}
+                                        isValidated={isValidated}
+                                        setIsValidated={setIsValidated}
+                                        auth={auth}
                                         setAuth={setAuth}
-                                        setUser={setUser}
                                     />
                                 )}
                             </Route>
                             <Route path="/home">
-                                {!auth ? (
+                                {!auth.token ? (
                                     <Redirect to="/" />
                                 ) : (
-                                    <Home user={user} />
+                                    <Home user={auth.user} />
                                 )}
                             </Route>
                         </AppContainer>
