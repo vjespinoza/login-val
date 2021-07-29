@@ -9,7 +9,7 @@ import {
 import Logo from "../../assets/svg/logo.svg";
 import { CartFill } from "@styled-icons/bootstrap/CartFill";
 
-const Navbar = () => {
+const Navbar = ({ auth }) => {
     return (
         <NavbarContainer>
             <NavbarListItem>
@@ -25,9 +25,19 @@ const Navbar = () => {
                     </Link>
                 </NavbarListItem>
                 <NavbarListItem>
-                    <Link to="/">
-                        <Button>Iniciar Sesión</Button>
-                    </Link>
+                    {auth.token ? (
+                        <p>
+                            {`Bienvenido, ${auth.user.slice(
+                                0,
+                                auth.user.indexOf("@")
+                            )}!`}{" "}
+                            | <span>Cerrar Sesión</span>
+                        </p>
+                    ) : (
+                        <Link to="/">
+                            <Button>Iniciar Sesión</Button>
+                        </Link>
+                    )}
                 </NavbarListItem>
             </NavbarList>
         </NavbarContainer>

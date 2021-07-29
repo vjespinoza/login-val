@@ -6,8 +6,9 @@
         "price": 121.99,
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
-        "image": "../../assets/img/Nike-Men-1.jpg",
-        "gender_type": "men" 
+        "image": "Nike-Men-1.jpg",
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Hombre", "Running", "Fitness"] 
 
     },
     {
@@ -18,7 +19,8 @@
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Men-2.jpg",
-        "gender_type": "men" 
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Hombre", "Atletismo"] 
 
     },
     {
@@ -29,7 +31,8 @@
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Men-3.jpg",
-        "gender_type": "men" 
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Hombre", "Fitness", "Atletismo"] 
 
     },
     {
@@ -40,7 +43,8 @@
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Men-4.jpg",
-        "gender_type": "men" 
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Hombre", "Running", "Atletismo"] 
 
     },
     {
@@ -51,7 +55,8 @@
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Men-5.jpg",
-        "gender_type": "men" 
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Hombre", "Running", "Fitness", "Atletismo"] 
 
     },
     {
@@ -62,7 +67,8 @@
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-1.jpg",
-        "gender_type": "women" 
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Mujer", "Running", "Fitness"] 
 
     },
     {
@@ -73,7 +79,8 @@
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-2.jpg",
-        "gender_type": "women" 
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Mujer", "Fitness", "Caminata"] 
 
     },
     {
@@ -84,7 +91,8 @@
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-3.jpg",
-        "gender_type": "women" 
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Mujer", "Fashion", "Caminata"] 
 
     },
     {
@@ -95,7 +103,8 @@
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-4.jpg",
-        "gender_type": "women" 
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Mujer", "Fitness", "Fashion"] 
 
     },
     {
@@ -106,6 +115,7 @@
         "seller": "Nike",
         "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-5.jpg",
-        "gender_type": "women" 
+        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "tags": ["Mujer", "Running", "Fitness", "Atletismo"] 
     }
 ]

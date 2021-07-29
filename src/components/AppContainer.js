@@ -5,7 +5,7 @@ export const AppContainer = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 65px);
+    /* height: calc(100vh - 65px); */
 
     @media (max-width: 768px) {
         height: auto;

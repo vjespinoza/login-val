@@ -44,10 +44,10 @@ function App() {
             <ThemeProvider theme={theme}>
                 <GlobalStyles />
                 <Router>
-                    <Navbar />
+                    <Navbar auth={auth} />
                     <Switch>
                         <AppContainer>
-                            <Route exact path="/">
+                            {/* <Route exact path="/">
                                 {auth.token ? (
                                     <Redirect to="/home" />
                                 ) : (
@@ -62,11 +62,11 @@ function App() {
                                 )}
                             </Route>
                             <Route path="/home">
-                                {!auth.token ? (
-                                    <Redirect to="/" />
-                                ) : (
-                                    <Home user={auth.user} />
-                                )}
+                                {!auth.token ? <Redirect to="/" /> : <Home />}
+                            </Route> */}
+                            <Route path="/">
+                                <Redirect to="/home" />
+                                <Home />
                             </Route>
                         </AppContainer>
                     </Switch>
