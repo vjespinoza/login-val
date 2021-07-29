@@ -5,9 +5,8 @@
         "model": "NM-7569",
         "price": 121.99,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Men-1.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [8, 8.5, 9, 9.5, 10, 10.5, 11],
         "tags": ["Hombre", "Running", "Fitness"] 
 
     },
@@ -17,9 +16,8 @@
         "model": "NM-1541",
         "price": 109.99,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Men-2.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [7.5, 8, 8.5, 9, 9.5, 10],
         "tags": ["Hombre", "Atletismo"] 
 
     },
@@ -29,21 +27,19 @@
         "model": "NM-5408",
         "price": 89.75,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Men-3.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12],
         "tags": ["Hombre", "Fitness", "Atletismo"] 
 
     },
     {
         "id": "RS-004",
-        "name": "zapatilla deportiva zero+",
+        "name": "tenis deportivo zero+",
         "model": "NM-7185",
         "price": 112.45,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Men-4.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12],
         "tags": ["Hombre", "Running", "Atletismo"] 
 
     },
@@ -53,9 +49,8 @@
         "model": "NM-0804",
         "price": 75.89,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Men-5.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [9, 9.5, 10, 10.5, 11],
         "tags": ["Hombre", "Running", "Fitness", "Atletismo"] 
 
     },
@@ -65,21 +60,19 @@
         "model": "NW-9534",
         "price": 115.79,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-1.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9],
         "tags": ["Mujer", "Running", "Fitness"] 
 
     },
     {
         "id": "RS-007",
-        "name": "zapatilla lady runner",
+        "name": "tenis lady runner",
         "model": "NW-0484",
         "price": 99.99,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-2.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [6, 6.5, 7, 7.5, 8, 8.5],
         "tags": ["Mujer", "Fitness", "Caminata"] 
 
     },
@@ -89,9 +82,8 @@
         "model": "NW-8735",
         "price": 101.00,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-3.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10],
         "tags": ["Mujer", "Fashion", "Caminata"] 
 
     },
@@ -101,9 +93,8 @@
         "model": "NW",
         "price": 124.99,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-4.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9],
         "tags": ["Mujer", "Fitness", "Fashion"] 
 
     },
@@ -113,9 +104,8 @@
         "model": "NW-2044",
         "price": 89.50,
         "seller": "Nike",
-        "description" : ["Ligeros", "Interior acolchado", "Pisada suave"],
         "image": "Nike-Women-5.jpg",
-        "sizes": [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13,14],
+        "sizes": [5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5],
         "tags": ["Mujer", "Running", "Fitness", "Atletismo"] 
     }
 ]
