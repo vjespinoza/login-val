@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
     ProductCard,
     ProductInfo,
@@ -11,9 +12,21 @@ import {
     SizeWrapper,
     ProductSize,
     ProductTag,
+    ActionWrapper,
+    Action,
+    QtyInput,
+    QtyButton,
 } from "./productItem.style";
+import { Button } from "./../../shared/Button";
+import { Plus, Dash } from "@styled-icons/bootstrap";
 
 const ProductItem = ({ shoe }) => {
+    const [showSize, setShowSize] = useState(false);
+
+    const toggleSize = () => {
+        setShowSize((showSize) => !showSize);
+    };
+
     return (
         <ProductCard>
             <ImageWrapper>
@@ -33,8 +46,10 @@ const ProductItem = ({ shoe }) => {
                 <ProductModel>Modelo: {shoe.model}</ProductModel>
                 <ProductSeller>Vendedor: {shoe.seller}</ProductSeller>
                 <SizeWrapper>
-                    <label>Tallas:</label>
-                    <ProductSize>
+                    <label onClick={toggleSize}>
+                        <Plus size="22" /> Tallas:
+                    </label>
+                    <ProductSize showSize={showSize}>
                         {shoe.sizes.map((size, i) => {
                             return (
                                 <div key={`item-${shoe.id}-${i}`}>
@@ -57,6 +72,20 @@ const ProductItem = ({ shoe }) => {
                     </ProductSize>
                 </SizeWrapper>
             </ProductInfo>
+            <ActionWrapper>
+                {/* <Action>
+                    <QtyButton left>
+                        <Dash size="18" />
+                    </QtyButton>
+                    <QtyInput type="number" min="1" value="1" disabled />
+                    <QtyButton>
+                        <Plus size="18" />
+                    </QtyButton>
+                </Action> */}
+                <Button noMargin sFont>
+                    Agregar al carrito
+                </Button>
+            </ActionWrapper>
         </ProductCard>
     );
 };
