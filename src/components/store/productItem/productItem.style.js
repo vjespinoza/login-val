@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../shared/Button";
 
 export const ProductCard = styled.div`
     display: flex;
@@ -80,12 +81,14 @@ export const SizeWrapper = styled.form`
     }
 
     & > label > svg {
-        margin-bottom: 4px;
+        margin-bottom: 2px;
+        transform: ${(props) =>
+            props.showSize ? "rotate(90deg)" : "rotate(0deg)"};
+        transition: transform ease-in-out 200ms;
     }
 `;
 
 export const ProductSize = styled.fieldset`
-    /* display: ${(props) => (props.showSize ? "flex" : "none")}; */
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -97,6 +100,7 @@ export const ProductSize = styled.fieldset`
     background-color: #fff;
     padding: 20px;
     position: absolute;
+    z-index: 10;
     top: 50px;
     left: 0;
     transform: ${(props) => (props.showSize ? "scale(1)" : "scale(0)")};
@@ -139,13 +143,26 @@ export const ProductTag = styled.span`
 
 export const ActionWrapper = styled.div`
     display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
+    width: 100%;
+    justify-content: ${(props) =>
+        props.showAction ? "space-between" : "center"};
+    padding: 0 20px 20px 20px;
+    margin-top: 20px;
 `;
 
 export const Action = styled.div`
-    display: flex;
-    justify-content: center;
+    display: ${(props) => (props.showAction ? "flex" : "none")};
+    position: relative;
+    justify-content: ${(props) =>
+        !props.showAction ? "space-between" : "center"};
+
+    &:after {
+        content: "Cantidad:";
+        display: block;
+        position: absolute;
+        top: -70%;
+        left: 0;
+    }
 `;
 
 export const QtyInput = styled.input`
@@ -154,8 +171,8 @@ export const QtyInput = styled.input`
     color: ${(props) => props.theme.colors.font};
     padding-right: 0rem;
     outline: none;
-    border-top: 1px solid #ced4da;
-    border-bottom: 1px solid #ced4da;
+    border-top: 1px solid ${(props) => props.theme.colors.border};
+    border-bottom: 1px solid ${(props) => props.theme.colors.border};
     border-left: none;
     border-right: none;
     background-color: transparent;
@@ -186,4 +203,45 @@ export const QtyButton = styled.button`
     height: 2rem;
     cursor: pointer;
     text-align: center;
+`;
+
+export const AddToCart = styled(Button)`
+    display: ${(props) => (props.showAction ? "none" : "block")};
+    background-color: transparent;
+    border-radius: 500px;
+    border: 1px solid ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.secondary};
+    padding: 0.5rem;
+    box-shadow: none;
+    transition: all ease-in-out 200ms;
+
+    /* &:hover {
+    } */
+`;
+
+export const AddConfirm = styled(Button)`
+    display: ${(props) => (props.showAction ? "block" : "none")};
+    background-color: transparent;
+    border-radius: 500px;
+    border: 1px solid ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.secondary};
+    padding: 0.5rem;
+    box-shadow: none;
+    transition: all ease-in-out 200ms;
+    position: relative;
+
+    &:hover::after {
+        content: "Confirmar";
+        display: block;
+        position: absolute;
+        top: -100%;
+        left: 50%;
+        padding: 10px;
+        border-radius: 4px;
+        background: #050505;
+        color: #fff;
+        text-transform: capitalize;
+        font-size: 0.7em;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    }
 `;

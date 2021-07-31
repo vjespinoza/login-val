@@ -29,6 +29,7 @@ function App() {
             : "",
         user: sessionStorage.USER ? JSON.parse(sessionStorage.USER) : "",
     });
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         sessionStorage.setItem("ACCESS_TOKEN", JSON.stringify(auth.token));

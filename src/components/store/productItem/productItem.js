@@ -16,21 +16,35 @@ import {
     Action,
     QtyInput,
     QtyButton,
+    AddToCart,
+    AddConfirm,
 } from "./productItem.style";
-import { Button } from "./../../shared/Button";
-import { Plus, Dash } from "@styled-icons/bootstrap";
+import { Plus, Dash, ChevronRight, BagCheck } from "@styled-icons/bootstrap";
+import useCart from "./../../../hooks/useCart";
 
 const ProductItem = ({ shoe }) => {
     const [showSize, setShowSize] = useState(false);
+    const [showAction, setShowAction] = useState(false);
+
+    const { cartItem, handleNewItem, handleRadioSelect, handleQuantity } =
+        useCart();
 
     const toggleSize = () => {
         setShowSize((showSize) => !showSize);
     };
 
+    const toggleAction = () => {
+        setShowAction((showAction) => !showAction);
+    };
+
     return (
         <ProductCard>
             <ImageWrapper>
-                <ProductImage src={`./img/${shoe.image}`} />
+                <ProductImage
+                    data-item-image={`${shoe.image}`}
+                    id={`image-${shoe.id}`}
+                    src={`./img/${shoe.image}`}
+                />
             </ImageWrapper>
             <ProductInfo>
                 <TagWrapper>
@@ -38,16 +52,23 @@ const ProductItem = ({ shoe }) => {
                         return <ProductTag key={`tag-${i}`}>{tag}</ProductTag>;
                     })}
                 </TagWrapper>
-                <ProductPrice>
+                <ProductPrice
+                    id={`price-${shoe.id}`}
+                    data-item-price={`${shoe.price}`}
+                >
                     <sup>$</sup>
                     {shoe.price}
                 </ProductPrice>
-                <ProductName>{shoe.name}</ProductName>
-                <ProductModel>Modelo: {shoe.model}</ProductModel>
-                <ProductSeller>Vendedor: {shoe.seller}</ProductSeller>
-                <SizeWrapper>
+                <ProductName id={`name-${shoe.id}`}>{shoe.name}</ProductName>
+                <ProductModel id={`model-${shoe.id}`}>
+                    Modelo: {shoe.model}
+                </ProductModel>
+                <ProductSeller id={`seller-${shoe.id}`}>
+                    Vendedor: {shoe.seller}
+                </ProductSeller>
+                <SizeWrapper showSize={showSize}>
                     <label onClick={toggleSize}>
-                        <Plus size="22" /> Tallas:
+                        Tallas: <ChevronRight size="14" />
                     </label>
                     <ProductSize showSize={showSize}>
                         {shoe.sizes.map((size, i) => {
@@ -57,7 +78,10 @@ const ProductItem = ({ shoe }) => {
                                         id={`input-${shoe.id}-${i}`}
                                         key={`input-${shoe.id}-${i}`}
                                         type="radio"
-                                        name={shoe.id}
+                                        onChange={(e) => handleRadioSelect(e)}
+                                        // name={shoe.id}
+                                        name="size"
+                                        value={size}
                                     ></input>
                                     <label
                                         htmlFor={`input-${shoe.id}-${i}`}
@@ -72,19 +96,40 @@ const ProductItem = ({ shoe }) => {
                     </ProductSize>
                 </SizeWrapper>
             </ProductInfo>
-            <ActionWrapper>
-                {/* <Action>
-                    <QtyButton left>
+            <ActionWrapper showAction={showAction}>
+                <Action showAction={showAction}>
+                    <QtyButton
+                        onClick={(e) => handleQuantity(e)}
+                        left
+                        id="decrease"
+                    >
                         <Dash size="18" />
                     </QtyButton>
-                    <QtyInput type="number" min="1" value="1" disabled />
-                    <QtyButton>
+                    <QtyInput
+                        id={`quantity-${shoe.id}`}
+                        type="number"
+                        value={cartItem.quantity}
+                        disabled
+                    />
+                    <QtyButton onClick={(e) => handleQuantity(e)} id="increase">
                         <Plus size="18" />
                     </QtyButton>
-                </Action> */}
-                <Button noMargin sFont>
+                </Action>
+                <AddToCart
+                    showAction={showAction}
+                    noMargin
+                    sFont
+                    onClick={(e) => {
+                        toggleAction();
+                        handleNewItem(e);
+                    }}
+                    id={shoe.id}
+                >
                     Agregar al carrito
-                </Button>
+                </AddToCart>
+                <AddConfirm showAction={showAction} noMargin>
+                    <BagCheck size="15" />
+                </AddConfirm>
             </ActionWrapper>
         </ProductCard>
     );
