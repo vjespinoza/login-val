@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/navbar";
 //Pages
 import Home from "./pages/home";
 import LoginPage from "./pages/loginPage";
+import Store from "./pages/store";
 //Styles
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
@@ -66,8 +67,8 @@ function App() {
                                 {!auth.token ? <Redirect to="/" /> : <Home />}
                             </Route> */}
                             <Route path="/">
-                                <Redirect to="/home" />
-                                <Home />
+                                <Redirect to="/store" />
+                                <Store />
                             </Route>
                         </AppContainer>
                     </Switch>

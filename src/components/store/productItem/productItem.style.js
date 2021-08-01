@@ -6,7 +6,6 @@ export const ProductCard = styled.div`
     flex-direction: column;
     width: 100%;
     max-width: 320px;
-    margin-bottom: 20px;
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 
     &:hover > div img {
