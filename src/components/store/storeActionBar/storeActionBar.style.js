@@ -6,7 +6,7 @@ export const ActionBar = styled.nav`
     min-width: 300px;
     max-width: 1060px;
     height: 3.5rem;
-    margin: 50px 0;
+    margin: 115px 0 50px 0;
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 
     @media (max-width: 360px) {

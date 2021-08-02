@@ -7,6 +7,6 @@ export const StoreContainer = styled.div`
     min-width: 300px;
     max-width: 1060px;
     gap: 20px;
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
     justify-items: center;
 `;

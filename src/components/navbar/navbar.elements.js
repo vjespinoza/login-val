@@ -2,10 +2,16 @@ import styled from "styled-components";
 
 export const NavbarContainer = styled.nav`
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
     justify-content: space-between;
     align-content: center;
     padding: 0 5vw;
     height: 65px;
+    background: #fff;
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 
     & button {

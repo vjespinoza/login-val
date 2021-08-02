@@ -42,7 +42,12 @@ const ProductItem = ({ shoe, cart, setCart }) => {
         setShowAction((showAction) => !showAction);
     };
 
+    // const rotateCard = () => {
+    //     console.log(cartItem.name);
+    // };
+
     return (
+        // <ProductCard rotateCard={cartItem.inCart}>
         <ProductCard>
             <ImageWrapper>
                 <ProductImage

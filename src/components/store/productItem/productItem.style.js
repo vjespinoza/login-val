@@ -8,6 +8,12 @@ export const ProductCard = styled.div`
     max-width: 320px;
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
     align-self: center;
+    /* transform: ${(props) =>
+        props.rotateCard ? "rotateY(180deg)" : "rotateY(0deg)"};
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 1s; 
+    transition: transform 1s; */
 
     &:hover > div img {
         transform: scale(1.1);

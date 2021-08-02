@@ -40,7 +40,6 @@ const useFormValidate = ({ isValidated, setIsValidated, auth, setAuth }) => {
         if (Object.values(error).length > 0) {
             errorMessage(error);
         } else if (Object.values(error).length === 0) {
-            console.log("no errors");
             fetchLogin(data, isValidated, setAuth);
             successMessage(data, isValidated);
         }

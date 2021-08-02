@@ -50,21 +50,36 @@ const useCart = ({ cart, setCart, setShowAction }) => {
             quantity: parseInt(
                 document.getElementById(`quantity-${prodID}`).value
             ),
-            inCart: true,
         });
     };
 
+    //validate if item is already in the cart
+    // const handleConfirmItem = () => {
+    //     if (cart.length === 0) {
+    //         setCart([...cart, cartItem]);
+    //     } else {
+    //         cart.map((item) => {
+    //             if (!Object.values(item).includes(`${cartItem.model}`)) {
+    //                 setCart([...cart, cartItem]);
+    //             } else {
+    //                 console.log("Item already in the cart");
+    //             }
+    //         });
+    //     }
+    // };
     const handleConfirmItem = () => {
         setCart([...cart, cartItem]);
     };
 
     useEffect(() => {
-        // console.log(cartItem);
         if (cartItem.quantity < 1) {
             setShowAction(false);
             setCartItem({ ...cartItem, quantity: 1 });
         }
     }, [cartItem]);
+
+    // useEffect(() => {
+    // }, [cart]);
 
     return {
         cartItem,
