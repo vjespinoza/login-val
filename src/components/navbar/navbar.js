@@ -7,21 +7,21 @@ import {
     NavbarLogo,
 } from "./navbar.elements";
 import Logo from "../../assets/svg/logo.svg";
-import { CartFill } from "@styled-icons/bootstrap/CartFill";
+import { Bag } from "@styled-icons/bootstrap/Bag";
 
 const Navbar = ({ auth }) => {
     return (
         <NavbarContainer>
             <NavbarListItem>
-                <Link to="/home">
+                <Link to="/">
                     <NavbarLogo src={Logo} alt="runrs logo" />
                 </Link>
             </NavbarListItem>
 
             <NavbarList>
                 <NavbarListItem>
-                    <Link to="/home">
-                        <CartFill size="20" />
+                    <Link to="/cart">
+                        <Bag size="20" />
                     </Link>
                 </NavbarListItem>
                 <NavbarListItem>
@@ -30,11 +30,12 @@ const Navbar = ({ auth }) => {
                             {`Bienvenido, ${auth.user.slice(
                                 0,
                                 auth.user.indexOf("@")
-                            )}!`}{" "}
-                            | <span>Cerrar Sesión</span>
+                            )}!`}
+                            <span>|</span>
+                            <span>Cerrar Sesión</span>
                         </p>
                     ) : (
-                        <Link to="/">
+                        <Link to="/login">
                             <Button>Iniciar Sesión</Button>
                         </Link>
                     )}

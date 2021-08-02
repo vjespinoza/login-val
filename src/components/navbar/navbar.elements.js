@@ -25,11 +25,25 @@ export const NavbarListItem = styled.li`
     list-style: none;
     font-weight: 500;
     font-size: 0.9rem;
-    margin-right: 40px;
+    margin: 0 0 5px 0;
     line-height: 2;
 
     &:last-child {
-        margin-right: 0;
+        margin: 0 0 0 15px;
+    }
+
+    & span:first-child {
+        margin: 0 10px;
+    }
+
+    & span {
+        cursor: pointer;
+        transition: color ease-in-out 200ms;
+    }
+
+    & span:hover {
+        color: ${(props) => props.theme.colors.secondary};
+        transition: color ease-in-out 200ms;
     }
 `;
 

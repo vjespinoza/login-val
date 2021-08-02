@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/navbar";
 import Home from "./pages/home";
 import LoginPage from "./pages/loginPage";
 import Store from "./pages/store";
+import Cart from "./pages/cart";
 //Styles
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
@@ -30,12 +31,15 @@ function App() {
             : "",
         user: sessionStorage.USER ? JSON.parse(sessionStorage.USER) : "",
     });
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(
+        sessionStorage.CART ? JSON.parse(sessionStorage.CART) : []
+    );
 
     useEffect(() => {
         sessionStorage.setItem("ACCESS_TOKEN", JSON.stringify(auth.token));
         sessionStorage.setItem("USER", JSON.stringify(auth.user));
-    }, [auth]);
+        sessionStorage.setItem("CART", JSON.stringify(cart));
+    }, [auth, cart]);
 
     const handleIsActive = () => {
         setIsActive((isActive) => !isActive);
@@ -49,9 +53,12 @@ function App() {
                     <Navbar auth={auth} />
                     <Switch>
                         <AppContainer>
-                            {/* <Route exact path="/">
+                            <Route exact path="/">
+                                <Home />
+                            </Route>
+                            <Route path="/login">
                                 {auth.token ? (
-                                    <Redirect to="/home" />
+                                    <Redirect to="/store" />
                                 ) : (
                                     <LoginPage
                                         isActive={isActive}
@@ -63,12 +70,19 @@ function App() {
                                     />
                                 )}
                             </Route>
-                            <Route path="/home">
-                                {!auth.token ? <Redirect to="/" /> : <Home />}
-                            </Route> */}
-                            <Route path="/">
-                                <Redirect to="/store" />
-                                <Store />
+                            <Route path="/store">
+                                {!auth.token ? (
+                                    <Redirect to="/" />
+                                ) : (
+                                    <Store cart={cart} setCart={setCart} />
+                                )}
+                            </Route>
+                            <Route path="/cart">
+                                {!auth.token ? (
+                                    <Redirect to="/" />
+                                ) : (
+                                    <Cart cart={cart} setCart={setCart} />
+                                )}
                             </Route>
                         </AppContainer>
                     </Switch>

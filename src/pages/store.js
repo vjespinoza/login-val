@@ -1,10 +1,11 @@
 import ProductList from "../components/store/productList/productList";
+import StoreActionBar from "../components/store/storeActionBar/storeActionBar";
 
-const Store = () => {
+const Store = ({ cart, setCart }) => {
     return (
         <>
-            <div>Store</div>
-            <ProductList />
+            <StoreActionBar />
+            <ProductList cart={cart} setCart={setCart} />
         </>
     );
 };

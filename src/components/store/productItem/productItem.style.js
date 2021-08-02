@@ -7,6 +7,7 @@ export const ProductCard = styled.div`
     width: 100%;
     max-width: 320px;
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+    align-self: center;
 
     &:hover > div img {
         transform: scale(1.1);
@@ -40,6 +41,7 @@ export const ProductImage = styled.img`
 
 export const ProductName = styled.h3`
     grid-area: name;
+    font-size: 1rem;
     text-transform: uppercase;
     margin: 10px 0 10px 0;
     color: ${(props) => props.theme.colors.secondary};
@@ -90,8 +92,7 @@ export const SizeWrapper = styled.form`
 export const ProductSize = styled.fieldset`
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    align-content: flex-start;
+    gap: 20px;
     outline: none;
     border: none;
     color: ${(props) => (props.showSize ? props.theme.colors.font : "#fff")};

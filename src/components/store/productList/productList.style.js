@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const StoreContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
-    width: 100%;
-    min-width: 20rem;
-    max-width: 70rem;
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    width: 90%;
+    min-width: 300px;
+    max-width: 1060px;
+    gap: 20px;
     margin: 0 auto;
     justify-items: center;
 `;

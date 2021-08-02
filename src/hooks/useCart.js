@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useCart = () => {
+const useCart = ({ cart, setCart, setShowAction }) => {
     const [cartItem, setCartItem] = useState({
         image: "",
         name: "",
@@ -50,14 +50,29 @@ const useCart = () => {
             quantity: parseInt(
                 document.getElementById(`quantity-${prodID}`).value
             ),
+            inCart: true,
         });
     };
 
+    const handleConfirmItem = () => {
+        setCart([...cart, cartItem]);
+    };
+
     useEffect(() => {
-        console.log(cartItem);
+        // console.log(cartItem);
+        if (cartItem.quantity < 1) {
+            setShowAction(false);
+            setCartItem({ ...cartItem, quantity: 1 });
+        }
     }, [cartItem]);
 
-    return { cartItem, handleNewItem, handleRadioSelect, handleQuantity };
+    return {
+        cartItem,
+        handleNewItem,
+        handleRadioSelect,
+        handleQuantity,
+        handleConfirmItem,
+    };
 };
 
 export default useCart;

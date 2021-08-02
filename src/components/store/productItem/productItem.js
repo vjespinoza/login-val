@@ -22,12 +22,17 @@ import {
 import { Plus, Dash, ChevronRight, BagCheck } from "@styled-icons/bootstrap";
 import useCart from "./../../../hooks/useCart";
 
-const ProductItem = ({ shoe }) => {
+const ProductItem = ({ shoe, cart, setCart }) => {
     const [showSize, setShowSize] = useState(false);
     const [showAction, setShowAction] = useState(false);
 
-    const { cartItem, handleNewItem, handleRadioSelect, handleQuantity } =
-        useCart();
+    const {
+        cartItem,
+        handleNewItem,
+        handleRadioSelect,
+        handleQuantity,
+        handleConfirmItem,
+    } = useCart({ cart, setCart, setShowAction });
 
     const toggleSize = () => {
         setShowSize((showSize) => !showSize);
@@ -127,7 +132,11 @@ const ProductItem = ({ shoe }) => {
                 >
                     Agregar al carrito
                 </AddToCart>
-                <AddConfirm showAction={showAction} noMargin>
+                <AddConfirm
+                    onClick={handleConfirmItem}
+                    showAction={showAction}
+                    noMargin
+                >
                     <BagCheck size="15" />
                 </AddConfirm>
             </ActionWrapper>
