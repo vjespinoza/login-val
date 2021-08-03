@@ -82,6 +82,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
 
     return {
         cartItem,
+        setCartItem,
         handleNewItem,
         handleRadioSelect,
         handleQuantity,

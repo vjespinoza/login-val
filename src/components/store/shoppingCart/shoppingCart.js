@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import {
     CartWrapper,
     CartHeader,
@@ -7,11 +9,18 @@ import {
     CartProducts,
     CartProductsFooter,
     EmptyCart,
+    Action,
+    QtyInput,
+    QtyButton,
 } from "./shoppingCart.style";
-import { Trash } from "@styled-icons/bootstrap";
+import { Trash, Dash, Plus } from "@styled-icons/bootstrap";
 import { Link } from "react-router-dom";
 
 const ShoppingCart = ({ cart, setCart }) => {
+    console.log(cart, setCart);
+    const [count, setCount] = useState();
+    const [temp, setTemp] = useState([]);
+
     const handleEmptyCart = () => {
         let cartCopy = cart;
 
@@ -31,6 +40,30 @@ const ShoppingCart = ({ cart, setCart }) => {
 
         setCart(filterItem);
     };
+
+    const handleEditQuantity = (e) => {
+        let action = e.currentTarget.dataset.action;
+        let id = parseInt(e.currentTarget.id.slice(-2)) * -1;
+        let copy = cart;
+        let counter = cart[id].quantity;
+
+        if (action === "plus") {
+            copy[id] = { ...copy[id], quantity: counter + 1 };
+            setCount(copy[id].quantity);
+        } else {
+            copy[id] = { ...copy[id], quantity: counter - 1 };
+            setCount(copy[id].quantity);
+        }
+
+        setTemp(copy);
+    };
+
+    useEffect(() => {
+        if (temp.length !== 0) {
+            setCart(temp);
+            console.log(temp);
+        }
+    }, [count]);
 
     return (
         <CartWrapper>
@@ -79,7 +112,36 @@ const ShoppingCart = ({ cart, setCart }) => {
                                                 </span>
                                             </div>
                                         </section>
-                                        <section>{item.quantity}</section>
+                                        {/* <section>{item.quantity}</section> */}
+                                        <section>
+                                            <Action>
+                                                <QtyButton
+                                                    onClick={(e) =>
+                                                        handleEditQuantity(e)
+                                                    }
+                                                    left
+                                                    data-action="minus"
+                                                    id={item.id}
+                                                >
+                                                    <Dash size="18" />
+                                                </QtyButton>
+                                                <QtyInput
+                                                    id={`quantity-${item.id}`}
+                                                    type="number"
+                                                    value={item.quantity}
+                                                    disabled
+                                                />
+                                                <QtyButton
+                                                    onClick={(e) =>
+                                                        handleEditQuantity(e)
+                                                    }
+                                                    data-action="plus"
+                                                    id={item.id}
+                                                >
+                                                    <Plus size="18" />
+                                                </QtyButton>
+                                            </Action>
+                                        </section>
                                         <section>
                                             <p>
                                                 <sup>$</sup>

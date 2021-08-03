@@ -119,19 +119,65 @@ export const CartProductsFooter = styled.div`
 `;
 
 export const EmptyCart = styled.div`
-     & h2 {
-         margin-bottom: 20px;
+    & h2 {
+        margin-bottom: 20px;
+    }
+
+    & a {
+        cursor: pointer;
+        color: ${(props) => props.theme.colors.font};
+
+        &:hover {
+            color: ${(props) => props.theme.colors.secondary};
         }
-        
-        & a {
-            cursor: pointer;
-            color: ${(props) => props.theme.colors.font};
-        
-            &:hover {
-                color: ${(props) => props.theme.colors.secondary};
-            }
-        }
-     }
+    }
+`;
+
+export const Action = styled.div`
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+`;
+
+export const QtyInput = styled.input`
+    text-align: center;
+    width: 2rem;
+    color: ${(props) => props.theme.colors.font};
+    padding-right: 0rem;
+    outline: none;
+    border-top: 1px solid ${(props) => props.theme.colors.border};
+    border-bottom: 1px solid ${(props) => props.theme.colors.border};
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    width: 2rem;
+    height: 2rem;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+`;
+
+export const QtyButton = styled.button`
+    outline: none;
+    border: 1px solid #ced4da;
+    border-radius: ${(props) =>
+        props.left ? "500px 0 0 500px" : "0 500px 500px 0"};
+    padding: ${(props) => (props.left ? "0 0 0 5px" : "0 5px 0 0")};
+    background-color: transparent;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    text-align: center;
 `;
 
 /**** ORDER SUMMARY ****/
