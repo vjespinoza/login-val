@@ -83,11 +83,11 @@ export const CartProducts = styled.div`
             justify-content: center;
         }
 
-        & section span {
+        & section span svg {
             cursor: pointer;
             margin-top: 20px;
         }
-        & section span:hover {
+        & section span svg:hover {
             color: red;
         }
 

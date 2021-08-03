@@ -12,12 +12,24 @@ import { Trash } from "@styled-icons/bootstrap";
 import { Link } from "react-router-dom";
 
 const ShoppingCart = ({ cart, setCart }) => {
-    const handleEmptycart = () => {
+    const handleEmptyCart = () => {
         let cartCopy = cart;
 
         cartCopy = [];
 
         setCart(cartCopy);
+    };
+
+    const handleRemoveItem = (e) => {
+        let targetID = e.currentTarget.dataset.id;
+
+        let cartCopy = cart;
+
+        let filterItem = cartCopy.filter((item) => {
+            return item.id !== targetID;
+        });
+
+        setCart(filterItem);
     };
 
     return (
@@ -57,7 +69,13 @@ const ShoppingCart = ({ cart, setCart }) => {
                                                 <h4>{item.name}</h4>
                                                 <p>{item.model}</p>
                                                 <span>
-                                                    <Trash size="20" />
+                                                    <Trash
+                                                        onClick={(e) =>
+                                                            handleRemoveItem(e)
+                                                        }
+                                                        data-id={item.id}
+                                                        size="20"
+                                                    />
                                                 </span>
                                             </div>
                                         </section>
@@ -84,7 +102,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                             <Link to="/store">
                                 <h4>Seguir comprando</h4>
                             </Link>
-                            <h4 onClick={handleEmptycart}>Vaciar carrito</h4>
+                            <h4 onClick={handleEmptyCart}>Vaciar carrito</h4>
                         </CartProductsFooter>
                     </>
                 )}

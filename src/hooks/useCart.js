@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const useCart = ({ cart, setCart, setShowAction }) => {
     const [cartItem, setCartItem] = useState({
+        id: "",
         image: "",
         name: "",
         model: "",
@@ -39,6 +40,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
 
         setCartItem({
             ...cartItem,
+            id: `cart-item-${cart.length}`,
             image: document.getElementById(`image-${prodID}`).dataset.itemImage,
             name: document.getElementById(`name-${prodID}`).innerHTML,
             model: document.getElementById(`model-${prodID}`).innerHTML,
@@ -53,33 +55,30 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         });
     };
 
-    //validate if item is already in the cart
-    // const handleConfirmItem = () => {
-    //     if (cart.length === 0) {
-    //         setCart([...cart, cartItem]);
-    //     } else {
-    //         cart.map((item) => {
-    //             if (!Object.values(item).includes(`${cartItem.model}`)) {
-    //                 setCart([...cart, cartItem]);
-    //             } else {
-    //                 console.log("Item already in the cart");
-    //             }
-    //         });
-    //     }
-    // };
     const handleConfirmItem = () => {
         setCart([...cart, cartItem]);
+        setCartItem({
+            id: "",
+            image: "",
+            name: "",
+            model: "",
+            seller: "",
+            size: "",
+            price: 0,
+            quantity: 1,
+        });
+        setShowAction(false);
     };
 
     useEffect(() => {
         if (cartItem.quantity < 1) {
             setShowAction(false);
-            setCartItem({ ...cartItem, quantity: 1 });
+            setCartItem({
+                ...cartItem,
+                quantity: 1,
+            });
         }
     }, [cartItem]);
-
-    // useEffect(() => {
-    // }, [cart]);
 
     return {
         cartItem,
@@ -91,3 +90,18 @@ const useCart = ({ cart, setCart, setShowAction }) => {
 };
 
 export default useCart;
+
+//validate if item is already in the cart
+// const handleConfirmItem = () => {
+//     if (cart.length === 0) {
+//         setCart([...cart, cartItem]);
+//     } else {
+//         cart.map((item) => {
+//             if (!Object.values(item).includes(`${cartItem.model}`)) {
+//                 setCart([...cart, cartItem]);
+//             } else {
+//                 console.log("Item already in the cart");
+//             }
+//         });
+//     }
+// };
