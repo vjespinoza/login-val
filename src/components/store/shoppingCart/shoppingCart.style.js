@@ -79,6 +79,10 @@ export const CartProducts = styled.div`
             text-align: center;
         }
 
+        & section + section > p {
+            justify-content: center;
+        }
+
         & section span {
             cursor: pointer;
             margin-top: 20px;
@@ -103,13 +107,31 @@ export const CartProductsFooter = styled.div`
     margin-top: 30px;
     padding-bottom: 30px;
 
-    & h4 {
+    & h4,
+    & a {
         cursor: pointer;
+        color: ${(props) => props.theme.colors.font};
 
         &:hover {
             color: ${(props) => props.theme.colors.secondary};
         }
     }
+`;
+
+export const EmptyCart = styled.div`
+     & h2 {
+         margin-bottom: 20px;
+        }
+        
+        & a {
+            cursor: pointer;
+            color: ${(props) => props.theme.colors.font};
+        
+            &:hover {
+                color: ${(props) => props.theme.colors.secondary};
+            }
+        }
+     }
 `;
 
 /**** ORDER SUMMARY ****/
