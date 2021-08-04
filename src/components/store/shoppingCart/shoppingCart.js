@@ -17,7 +17,6 @@ import { Trash, Dash, Plus } from "@styled-icons/bootstrap";
 import { Link } from "react-router-dom";
 
 const ShoppingCart = ({ cart, setCart }) => {
-    console.log(cart, setCart);
     const [count, setCount] = useState();
     const [temp, setTemp] = useState([]);
 
@@ -55,13 +54,19 @@ const ShoppingCart = ({ cart, setCart }) => {
             setCount(copy[id].quantity);
         }
 
+        if (copy[id].quantity < 1) {
+            let index = copy.indexOf(copy[id]);
+            copy.splice(index, 1);
+            console.log(copy, index);
+        }
+
         setTemp(copy);
     };
 
     useEffect(() => {
         if (temp.length !== 0) {
             setCart(temp);
-            console.log(temp);
+            sessionStorage.setItem("CART", JSON.stringify(cart));
         }
     }, [count]);
 
