@@ -42,7 +42,6 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         //Edit quantity of items already added to the cart
         if (dataOrigin === "cart-item") {
             let id = parseInt(e.currentTarget.id.slice(-2)) * -1;
-            let idName = e.currentTarget.id;
             let cartCount = cart[id].quantity;
             let copy = cart;
 
@@ -54,14 +53,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
                 setCount(copy[id].quantity);
             }
 
-            if (copy[id].quantity < 1) {
-                let filter = copy.filter((x) => x.id !== idName);
-                console.log(filter);
-                setCart(filter);
-            }
-            console.log(cart);
             setCart(copy);
-            console.log(cart);
 
             sessionStorage.setItem("CART", JSON.stringify(cart));
         }
@@ -131,10 +123,6 @@ const useCart = ({ cart, setCart, setShowAction }) => {
             });
         }
     }, [cartItem]);
-
-    // useEffect(() => {
-
-    // }, [count]);
 
     return {
         cartItem,

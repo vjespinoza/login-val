@@ -9,10 +9,15 @@ import {
 import Logo from "../../assets/svg/logo.svg";
 import { Bag } from "@styled-icons/bootstrap/Bag";
 
-const Navbar = ({ auth }) => {
+const Navbar = ({ auth, setAuth, setCart }) => {
+    const handleSessionEnd = () => {
+        setAuth({ token: "", user: "" });
+        setCart([]);
+    };
+
     return (
         <NavbarContainer>
-            <NavbarListItem>
+            <NavbarListItem logo>
                 <Link to="/">
                     <NavbarLogo src={Logo} alt="runrs logo" />
                 </Link>
@@ -32,7 +37,9 @@ const Navbar = ({ auth }) => {
                                 auth.user.indexOf("@")
                             )}!`}
                             <span>|</span>
-                            <span>Cerrar Sesión</span>
+                            <span onClick={handleSessionEnd}>
+                                Cerrar Sesión
+                            </span>
                         </p>
                     ) : (
                         <Link to="/login">

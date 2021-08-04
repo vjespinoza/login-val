@@ -50,7 +50,7 @@ function App() {
             <ThemeProvider theme={theme}>
                 <GlobalStyles />
                 <Router>
-                    <Navbar auth={auth} />
+                    <Navbar auth={auth} setAuth={setAuth} setCart={setCart} />
                     <Switch>
                         <AppContainer>
                             <Route exact path="/">

@@ -31,7 +31,7 @@ export const NavbarListItem = styled.li`
     list-style: none;
     font-weight: 500;
     font-size: 0.9rem;
-    margin: 0 0 5px 0;
+    margin: ${(props) => (props.logo ? "0" : "0 0 5px 0")};
     line-height: 2;
 
     &:last-child {

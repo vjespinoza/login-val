@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import {
     CartWrapper,
     CartHeader,
@@ -81,6 +79,11 @@ const ShoppingCart = ({ cart, setCart }) => {
                                                     data-action="minus"
                                                     data-origin="cart-item"
                                                     id={item.id}
+                                                    disabled={
+                                                        item.quantity <= 1
+                                                            ? true
+                                                            : false
+                                                    }
                                                 >
                                                     <Dash size="18" />
                                                 </QtyButton>

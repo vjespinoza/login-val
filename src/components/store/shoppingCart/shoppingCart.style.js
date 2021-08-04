@@ -172,12 +172,16 @@ export const QtyButton = styled.button`
     border: 1px solid #ced4da;
     border-radius: ${(props) =>
         props.left ? "500px 0 0 500px" : "0 500px 500px 0"};
-    padding: ${(props) => (props.left ? "0 0 0 5px" : "0 5px 0 0")};
+    padding: 5px;
     background-color: transparent;
     width: 2rem;
     height: 2rem;
     cursor: pointer;
     text-align: center;
+
+    /* & svg {
+        pointer-events: none;
+    } */
 `;
 
 /**** ORDER SUMMARY ****/
