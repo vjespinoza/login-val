@@ -11,6 +11,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         price: 0,
         quantity: 1,
     });
+    const [count, setCount] = useState();
 
     const handleRadioSelect = (e) => {
         const { name, value } = e.target;
@@ -19,19 +20,50 @@ const useCart = ({ cart, setCart, setShowAction }) => {
     };
 
     const handleQuantity = (e) => {
-        const targetButton = e.currentTarget.id;
-        let counter = cartItem.quantity;
+        const targetButton = e.currentTarget.dataset.action;
+        const dataOrigin = e.currentTarget.dataset.origin;
 
-        if (targetButton === "increase") {
-            setCartItem({
-                ...cartItem,
-                quantity: counter + 1,
-            });
-        } else {
-            setCartItem({
-                ...cartItem,
-                quantity: counter - 1,
-            });
+        //Edit new item quantity before adding it to cart
+        if (dataOrigin === "new-item") {
+            let newCount = cartItem.quantity;
+            if (targetButton === "increase") {
+                setCartItem({
+                    ...cartItem,
+                    quantity: newCount + 1,
+                });
+            } else if (targetButton === "decrease") {
+                setCartItem({
+                    ...cartItem,
+                    quantity: newCount - 1,
+                });
+            }
+        }
+
+        //Edit quantity of items already added to the cart
+        if (dataOrigin === "cart-item") {
+            let id = parseInt(e.currentTarget.id.slice(-2)) * -1;
+            let idName = e.currentTarget.id;
+            let cartCount = cart[id].quantity;
+            let copy = cart;
+
+            if (targetButton === "plus") {
+                copy[id] = { ...copy[id], quantity: cartCount + 1 };
+                setCount(copy[id].quantity);
+            } else if (targetButton === "minus") {
+                copy[id] = { ...copy[id], quantity: cartCount - 1 };
+                setCount(copy[id].quantity);
+            }
+
+            if (copy[id].quantity < 1) {
+                let filter = copy.filter((x) => x.id !== idName);
+                console.log(filter);
+                setCart(filter);
+            }
+            console.log(cart);
+            setCart(copy);
+            console.log(cart);
+
+            sessionStorage.setItem("CART", JSON.stringify(cart));
         }
     };
 
@@ -70,6 +102,26 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         setShowAction(false);
     };
 
+    const handleEmptyCart = () => {
+        let cartCopy = cart;
+
+        cartCopy = [];
+
+        setCart(cartCopy);
+    };
+
+    const handleRemoveItem = (e) => {
+        let targetID = e.currentTarget.dataset.id;
+
+        let cartCopy = cart;
+
+        let filterItem = cartCopy.filter((item) => {
+            return item.id !== targetID;
+        });
+
+        setCart(filterItem);
+    };
+
     useEffect(() => {
         if (cartItem.quantity < 1) {
             setShowAction(false);
@@ -80,6 +132,10 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         }
     }, [cartItem]);
 
+    // useEffect(() => {
+
+    // }, [count]);
+
     return {
         cartItem,
         setCartItem,
@@ -87,6 +143,8 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         handleRadioSelect,
         handleQuantity,
         handleConfirmItem,
+        handleEmptyCart,
+        handleRemoveItem,
     };
 };
 

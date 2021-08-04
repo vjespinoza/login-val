@@ -15,60 +15,13 @@ import {
 } from "./shoppingCart.style";
 import { Trash, Dash, Plus } from "@styled-icons/bootstrap";
 import { Link } from "react-router-dom";
+import useCart from "./../../../hooks/useCart";
 
 const ShoppingCart = ({ cart, setCart }) => {
-    const [count, setCount] = useState();
-    const [temp, setTemp] = useState([]);
-
-    const handleEmptyCart = () => {
-        let cartCopy = cart;
-
-        cartCopy = [];
-
-        setCart(cartCopy);
-    };
-
-    const handleRemoveItem = (e) => {
-        let targetID = e.currentTarget.dataset.id;
-
-        let cartCopy = cart;
-
-        let filterItem = cartCopy.filter((item) => {
-            return item.id !== targetID;
-        });
-
-        setCart(filterItem);
-    };
-
-    const handleEditQuantity = (e) => {
-        let action = e.currentTarget.dataset.action;
-        let id = parseInt(e.currentTarget.id.slice(-2)) * -1;
-        let copy = cart;
-        let counter = cart[id].quantity;
-
-        if (action === "plus") {
-            copy[id] = { ...copy[id], quantity: counter + 1 };
-            setCount(copy[id].quantity);
-        } else {
-            copy[id] = { ...copy[id], quantity: counter - 1 };
-            setCount(copy[id].quantity);
-        }
-
-        if (copy[id].quantity < 1) {
-            let index = copy.indexOf(copy[id]);
-            copy.splice(index, 1);
-            console.log(copy, index);
-        }
-
-        setTemp(copy);
-    };
-
-    useEffect(() => {
-        if (temp.length !== 0) {
-            setCart(temp);
-            sessionStorage.setItem("CART", JSON.stringify(cart));
-        }
-    }, [count]);
+    const { handleEmptyCart, handleRemoveItem, handleQuantity } = useCart({
+        cart,
+        setCart,
+    });
 
     return (
         <CartWrapper>
@@ -122,10 +75,11 @@ const ShoppingCart = ({ cart, setCart }) => {
                                             <Action>
                                                 <QtyButton
                                                     onClick={(e) =>
-                                                        handleEditQuantity(e)
+                                                        handleQuantity(e)
                                                     }
                                                     left
                                                     data-action="minus"
+                                                    data-origin="cart-item"
                                                     id={item.id}
                                                 >
                                                     <Dash size="18" />
@@ -138,9 +92,10 @@ const ShoppingCart = ({ cart, setCart }) => {
                                                 />
                                                 <QtyButton
                                                     onClick={(e) =>
-                                                        handleEditQuantity(e)
+                                                        handleQuantity(e)
                                                     }
                                                     data-action="plus"
+                                                    data-origin="cart-item"
                                                     id={item.id}
                                                 >
                                                     <Plus size="18" />

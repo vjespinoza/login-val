@@ -111,7 +111,8 @@ const ProductItem = ({ shoe, cart, setCart }) => {
                     <QtyButton
                         onClick={(e) => handleQuantity(e)}
                         left
-                        id="decrease"
+                        data-action="decrease"
+                        data-origin="new-item"
                     >
                         <Dash size="18" />
                     </QtyButton>
@@ -121,7 +122,11 @@ const ProductItem = ({ shoe, cart, setCart }) => {
                         value={cartItem.quantity}
                         disabled
                     />
-                    <QtyButton onClick={(e) => handleQuantity(e)} id="increase">
+                    <QtyButton
+                        onClick={(e) => handleQuantity(e)}
+                        data-action="increase"
+                        data-origin="new-item"
+                    >
                         <Plus size="18" />
                     </QtyButton>
                 </Action>
