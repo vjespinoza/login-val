@@ -202,6 +202,7 @@ export const OrderSummary = styled.div`
 export const SummaryDetails = styled.div`
     grid-area: summary;
     margin: 10px 0;
+    padding-bottom: 50px;
     border-bottom: 1px solid ${(props) => props.theme.colors.border};
 `;
 
@@ -227,6 +228,13 @@ export const OrderPromo = styled.div`
     }
 `;
 
-export const SummaryTotal = styled.div``;
+export const SummaryTotal = styled.div`
+    grid-area: sum-total;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+`;
 
-export const Checkout = styled.div``;
+export const Checkout = styled.div`
+    grid-area: checkout;
+`;

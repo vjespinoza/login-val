@@ -12,8 +12,12 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         quantity: 1,
     });
     const [count, setCount] = useState();
-    const [total, setTotal] = useState(0);
-    const [orderAddons, setOrderAddons] = useState({ shipping: 0, promo: 0 });
+    const [total, setTotal] = useState({ subTotal: 0, bigtotal: 0 });
+    const [orderAddons, setOrderAddons] = useState({
+        shipping: 0,
+        promo: "",
+        applyPromo: false,
+    });
 
     const handleRadioSelect = (e) => {
         const { name, value } = e.target;
@@ -121,8 +125,23 @@ const useCart = ({ cart, setCart, setShowAction }) => {
 
         setOrderAddons({
             ...orderAddons,
-            [name]: value,
+            [name]: value.toUpperCase(),
         });
+    };
+
+    const handleApplyPromo = () => {
+        if (orderAddons.promo === "PROMO") {
+            setOrderAddons({
+                ...orderAddons,
+                promo: "",
+                applyPromo: true,
+            });
+        } else {
+            setOrderAddons({
+                ...orderAddons,
+                applyPromo: false,
+            });
+        }
     };
 
     const handleOrderTotal = () => {
@@ -130,18 +149,19 @@ const useCart = ({ cart, setCart, setShowAction }) => {
             //Sub total
             let sumArr = cart.map((z) => z.price * z.quantity);
             let sum = sumArr.reduce((x, y) => x + y);
+            let discount = sum * 0.05;
+            let applyDiscount = orderAddons.applyPromo && discount;
 
-            if (orderAddons.shipping > 0) {
-                return sum + orderAddons.shipping;
-            }
+            // Big Total
+            let bigTotal =
+                sum + parseFloat(orderAddons.shipping) - applyDiscount;
 
-            if (orderAddons.promo === "promo") {
-                return sum - sum * 0.05;
-            }
-
-            setTotal(sum.toFixed(2));
+            setTotal({
+                subTotal: sum.toFixed(2),
+                bigTotal: bigTotal.toFixed(2),
+            });
         } else {
-            setTotal(0);
+            setTotal({ subTotal: 0, bigTotal: 0 });
         }
     };
 
@@ -171,6 +191,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         handleRemoveItem,
         orderAddons,
         handleOrderAddons,
+        handleApplyPromo,
     };
 };
 

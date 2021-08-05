@@ -32,6 +32,7 @@ const ShoppingCart = ({ cart, setCart }) => {
         handleQuantity,
         orderAddons,
         handleOrderAddons,
+        handleApplyPromo,
     } = useCart({
         cart,
         setCart,
@@ -154,7 +155,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                 <SummaryDetails>
                     <SummaryHeader>
                         <h4>{cart.length} artículos</h4>
-                        <h4>Sub-Total: ${total}</h4>
+                        <h4>Sub-Total: ${total.subTotal}</h4>
                     </SummaryHeader>
                     <OrderShipping>
                         <h4>Envío:</h4>
@@ -163,13 +164,13 @@ const ShoppingCart = ({ cart, setCart }) => {
                             name="shipping"
                             onChange={(e) => handleOrderAddons(e)}
                         >
-                            <option value="0">
+                            <option value={0}>
                                 Gratis (7 - 10 días) ** $0
                             </option>
-                            <option value="5">
+                            <option value={5}>
                                 Standard (3 - 5 días) ** $5
                             </option>
-                            <option value="10">Premium (1 día) ** $10</option>
+                            <option value={10}>Premium (1 día) ** $10</option>
                         </Select>
                     </OrderShipping>
                     <OrderPromo>
@@ -183,10 +184,18 @@ const ShoppingCart = ({ cart, setCart }) => {
                             name="promo"
                             value={orderAddons.promo}
                         />
-                        <Button primary>Aplicar Promo</Button>
+                        <Button onClick={handleApplyPromo} primary>
+                            Aplicar Promo
+                        </Button>
                     </OrderPromo>
                 </SummaryDetails>
-                <SummaryTotal></SummaryTotal>
+                <SummaryTotal>
+                    <h4>Total:</h4>
+                    <h4>
+                        <sup>$</sup>
+                        {total.bigTotal}
+                    </h4>
+                </SummaryTotal>
                 <Checkout></Checkout>
             </OrderSummary>
         </CartWrapper>
