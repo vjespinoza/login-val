@@ -27,14 +27,13 @@ export const CartDetails = styled.div`
     top: 65px;
     left: 0;
     width: 70vw;
-    height: calc(100vh - 65px);
     grid-template-areas:
         "header header"
         "products-header products-header"
         "products products"
         "footer footer";
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 1fr auto 1fr;
+    grid-template-rows: repeat(4, auto);
     background: #fff;
     padding: 75px;
 
@@ -48,6 +47,14 @@ export const CartDetails = styled.div`
         height: unset;
         margin-top: 65px;
     }
+
+    @media (max-width: 768px) {
+        grid-template-areas:
+            "header header"
+            "products products"
+            "footer footer";
+        grid-template-rows: 1fr auto 1fr;
+    }
 `;
 
 export const CartProductsHeader = styled.div`
@@ -60,6 +67,10 @@ export const CartProductsHeader = styled.div`
 
     & h4 + h4 {
         text-align: center;
+    }
+
+    @media (max-width: 768px) {
+        display: none;
     }
 `;
 
@@ -94,7 +105,7 @@ export const CartProducts = styled.div`
             text-align: center;
         }
 
-        & section + section > p {
+        & section + section p {
             justify-content: center;
         }
 
@@ -111,6 +122,58 @@ export const CartProducts = styled.div`
             height: 150px;
             object-fit: contain;
             object-position: top;
+        }
+
+        & section > .total-mobile {
+            display: none;
+
+            @media (max-width: 768px) {
+                display: block;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        & article {
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            border: 1px solid ${(props) => props.theme.colors.border};
+        }
+
+        & article > .productInfo {
+            display: flex;
+            flex-direction: column;
+
+            & img {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            & .productInfoText {
+                padding: 20px 0;
+                position: relative;
+
+                & .trashIcon {
+                    position: absolute;
+                    top: 0;
+                    right: 20px;
+                }
+            }
+        }
+
+        & .price {
+            display: none;
+        }
+
+        & .total {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+            font-weight: bold;
         }
     }
 `;
@@ -153,6 +216,10 @@ export const Action = styled.div`
     width: 100%;
     position: relative;
     justify-content: center;
+
+    @media (max-width: 768px) {
+        padding: 20px 0;
+    }
 `;
 
 export const QtyInput = styled.input`
@@ -209,24 +276,21 @@ export const OrderSummary = styled.div`
         "sum-total sum-total"
         "checkout checkout";
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 9fr 1fr 1fr;
+    grid-template-rows: fit-content(100%);
     background: #e9ecef;
     padding: 75px;
 
     @media (max-width: 1060px) {
+        display: flex;
+        flex-direction: column;
         padding: 40px;
     }
 
     @media (max-width: 960px) {
-        display: flex;
-        flex-direction: column;
         position: static;
         width: 100vw;
         height: fit-content;
-        margin-top: 65px;
-        /* grid-template-areas: none;
-        grid-template-columns: none;
-        grid-template-rows: none; */
+        margin-top: 0;
     }
 `;
 
@@ -276,6 +340,7 @@ export const SummaryTotal = styled.div`
     display: flex;
     justify-content: space-between;
     text-transform: uppercase;
+    margin-bottom: 20px;
 `;
 
 export const Checkout = styled.div`

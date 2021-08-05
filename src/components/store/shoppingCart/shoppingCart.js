@@ -66,15 +66,15 @@ const ShoppingCart = ({ cart, setCart }) => {
                             {cart.map((item, i) => {
                                 return (
                                     <article key={i}>
-                                        <section>
+                                        <section className="productInfo">
                                             <img
                                                 src={`./img/${item.image}`}
                                                 alt={item.name}
                                             />
-                                            <div>
+                                            <div className="productInfoText">
                                                 <h4>{item.name}</h4>
                                                 <p>{item.model}</p>
-                                                <span>
+                                                <span className="trashIcon">
                                                     <Trash
                                                         onClick={(e) =>
                                                             handleRemoveItem(e)
@@ -121,19 +121,22 @@ const ShoppingCart = ({ cart, setCart }) => {
                                                 </QtyButton>
                                             </Action>
                                         </section>
-                                        <section>
+                                        <section className="price">
                                             <p>
                                                 <sup>$</sup>
                                                 {item.price}
                                             </p>
                                         </section>
-                                        <section>
+                                        <section className="total">
                                             <p>
                                                 <sup>$</sup>
                                                 {(
                                                     item.quantity * item.price
                                                 ).toFixed(2)}
                                             </p>
+                                            <span className="total-mobile">
+                                                Total:{" "}
+                                            </span>
                                         </section>
                                     </article>
                                 );
@@ -155,7 +158,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                 <SummaryDetails>
                     <SummaryHeader>
                         <h4>{cart.length} artículos</h4>
-                        <h4>Sub-Total: ${total.subTotal}</h4>
+                        <h4>${total.subTotal}</h4>
                     </SummaryHeader>
                     <OrderShipping>
                         <h4>Envío:</h4>
@@ -191,12 +194,11 @@ const ShoppingCart = ({ cart, setCart }) => {
                 </SummaryDetails>
                 <SummaryTotal>
                     <h4>Total:</h4>
-                    <h4>
-                        <sup>$</sup>
-                        {total.bigTotal}
-                    </h4>
+                    <h4>${total.bigTotal}</h4>
                 </SummaryTotal>
-                <Checkout></Checkout>
+                <Checkout>
+                    <Button>Checkout</Button>
+                </Checkout>
             </OrderSummary>
         </CartWrapper>
     );
