@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Swal from "sweetalert";
 
 const useCart = ({ cart, setCart, setShowAction }) => {
     const [cartItem, setCartItem] = useState({
@@ -130,16 +131,34 @@ const useCart = ({ cart, setCart, setShowAction }) => {
     };
 
     const handleApplyPromo = () => {
-        if (orderAddons.promo === "PROMO") {
-            setOrderAddons({
-                ...orderAddons,
-                promo: "",
-                applyPromo: true,
-            });
+        if (cart.length !== 0) {
+            if (orderAddons.promo === "PROMO") {
+                setOrderAddons({
+                    ...orderAddons,
+                    promo: "",
+                    applyPromo: true,
+                });
+                Swal({
+                    title: "Código aplicado con exito!",
+                    text: "Tu orden tiene un descuento del 5%",
+                    icon: "success",
+                });
+            } else {
+                setOrderAddons({
+                    ...orderAddons,
+                    applyPromo: false,
+                });
+                Swal({
+                    title: "Código invalido!",
+                    text: "Verifica que tu código este correcto",
+                    icon: "error",
+                });
+            }
         } else {
-            setOrderAddons({
-                ...orderAddons,
-                applyPromo: false,
+            Swal({
+                title: "Carrito vacio!",
+                text: "Agrega algunos productos al carrito para poder aplicar tu codigo",
+                icon: "error",
             });
         }
     };

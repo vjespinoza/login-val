@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const CartWrapper = styled.div`
-    display: block;
-    /* position: relative; */
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
     width: 100vw;
+
+    @media (max-width: 960px) {
+        position: relative;
+    }
 `;
 
 export const CartHeader = styled.div`
@@ -30,9 +34,20 @@ export const CartDetails = styled.div`
         "products products"
         "footer footer";
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 1fr 9fr 1fr;
+    grid-template-rows: 1fr 1fr auto 1fr;
     background: #fff;
     padding: 75px;
+
+    @media (max-width: 1060px) {
+        padding: 40px;
+    }
+
+    @media (max-width: 960px) {
+        position: static;
+        width: 100vw;
+        height: unset;
+        margin-top: 65px;
+    }
 `;
 
 export const CartProductsHeader = styled.div`
@@ -197,6 +212,22 @@ export const OrderSummary = styled.div`
     grid-template-rows: 1fr 9fr 1fr 1fr;
     background: #e9ecef;
     padding: 75px;
+
+    @media (max-width: 1060px) {
+        padding: 40px;
+    }
+
+    @media (max-width: 960px) {
+        display: flex;
+        flex-direction: column;
+        position: static;
+        width: 100vw;
+        height: fit-content;
+        margin-top: 65px;
+        /* grid-template-areas: none;
+        grid-template-columns: none;
+        grid-template-rows: none; */
+    }
 `;
 
 export const SummaryDetails = styled.div`
@@ -208,8 +239,20 @@ export const SummaryDetails = styled.div`
 
 export const SummaryHeader = styled.div`
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     text-transform: uppercase;
+
+    @media (max-width: 1060px) {
+        flex-direction: column;
+
+        & h4 {
+            margin-bottom: 10px;
+        }
+    }
+
+    @media (max-width: 960px) {
+    }
 `;
 
 export const OrderShipping = styled.div`
