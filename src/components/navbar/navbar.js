@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../shared/Button";
 import {
@@ -5,11 +6,19 @@ import {
     NavbarList,
     NavbarListItem,
     NavbarLogo,
+    MobileMenuIcon,
+    NavBarMobile,
 } from "./navbar.elements";
 import Logo from "../../assets/svg/logo.svg";
-import { Bag } from "@styled-icons/bootstrap/Bag";
+import { Bag, List } from "@styled-icons/bootstrap/";
 
 const Navbar = ({ auth, setAuth, setCart }) => {
+    const [toggleMobile, setToggleMobile] = useState(false);
+
+    const handleToggleMobile = () => {
+        setToggleMobile((toggleMobile) => !toggleMobile);
+    };
+
     const handleSessionEnd = () => {
         setAuth({ token: "", user: "" });
         setCart([]);
@@ -48,6 +57,51 @@ const Navbar = ({ auth, setAuth, setCart }) => {
                     )}
                 </NavbarListItem>
             </NavbarList>
+            <MobileMenuIcon>
+                <List onClick={handleToggleMobile} size="25" />
+            </MobileMenuIcon>
+            <NavBarMobile toggleMobile={toggleMobile}>
+                {auth.token ? (
+                    <div>
+                        <div>
+                            <h4>
+                                {`Bienvenido, ${auth.user.slice(
+                                    0,
+                                    auth.user.indexOf("@")
+                                )}!`}
+                            </h4>
+                            <Link to="/">Home</Link>
+                            <Link to="/store">Tienda</Link>
+                            <Link to="/cart">
+                                Ver carrito <Bag size="15" />
+                            </Link>
+                        </div>
+                        <div>
+                            <Button
+                                onClick={() => {
+                                    handleSessionEnd();
+                                    handleToggleMobile();
+                                }}
+                            >
+                                Cerrar Sesión
+                            </Button>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <Link to="/">Home</Link>
+                        <Link to="/store">Tienda</Link>
+                        <Link to="/cart">
+                            Ver carrito <Bag size="15" />
+                        </Link>
+                        <Link to="/login">
+                            <Button onClick={handleToggleMobile}>
+                                Iniciar Sesión
+                            </Button>
+                        </Link>
+                    </div>
+                )}
+            </NavBarMobile>
         </NavbarContainer>
     );
 };

@@ -236,9 +236,10 @@ export const AddConfirm = styled(Button)`
     transition: all ease-in-out 200ms;
     position: relative;
 
-    &:hover::after {
+    &:after {
         content: "Confirmar";
         display: block;
+        visibility: hidden;
         position: absolute;
         top: -100%;
         left: 50%;
@@ -249,5 +250,10 @@ export const AddConfirm = styled(Button)`
         text-transform: capitalize;
         font-size: 0.7em;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    }
+    &:hover::after {
+        visibility: visible;
+        transition: all ease-in-out;
+        transition-delay: 1000ms;
     }
 `;
