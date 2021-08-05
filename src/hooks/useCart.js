@@ -12,6 +12,8 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         quantity: 1,
     });
     const [count, setCount] = useState();
+    const [total, setTotal] = useState(0);
+    const [orderAddons, setOrderAddons] = useState({ shipping: 0, promo: 0 });
 
     const handleRadioSelect = (e) => {
         const { name, value } = e.target;
@@ -114,6 +116,39 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         setCart(filterItem);
     };
 
+    const handleOrderAddons = (e) => {
+        const { name, value } = e.target;
+
+        setOrderAddons({
+            ...orderAddons,
+            [name]: value,
+        });
+    };
+
+    const handleOrderTotal = () => {
+        if (cart.length > 0) {
+            //Sub total
+            let sumArr = cart.map((z) => z.price * z.quantity);
+            let sum = sumArr.reduce((x, y) => x + y);
+
+            if (orderAddons.shipping > 0) {
+                return sum + orderAddons.shipping;
+            }
+
+            if (orderAddons.promo === "promo") {
+                return sum - sum * 0.05;
+            }
+
+            setTotal(sum.toFixed(2));
+        } else {
+            setTotal(0);
+        }
+    };
+
+    useEffect(() => {
+        handleOrderTotal();
+    }, [count, cart, orderAddons]);
+
     useEffect(() => {
         if (cartItem.quantity < 1) {
             setShowAction(false);
@@ -126,6 +161,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
 
     return {
         cartItem,
+        total,
         setCartItem,
         handleNewItem,
         handleRadioSelect,
@@ -133,6 +169,8 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         handleConfirmItem,
         handleEmptyCart,
         handleRemoveItem,
+        orderAddons,
+        handleOrderAddons,
     };
 };
 

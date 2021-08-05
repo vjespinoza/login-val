@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
+export const Select = styled.select`
     font-weight: bold;
     font-size: 0.9rem;
     height: 3rem;
     width: 100%;
-    padding: ${(props) => (props.promo ? "0 0.5rem" : "0")};
+    padding: 0 0.5rem;
     padding-right: 35px;
     border-style: none none solid none;
     border-width: 2px;
     border-color: ${(props) =>
         props.ligth ? "white" : props.theme.colors.font};
     margin-bottom: 1.5rem;
-    background-color: ${(props) => (props.bgColor ? "#fff" : "transparent")};
+    background-color: #fff;
     color: ${(props) => (props.ligth ? "white" : props.theme.colors.font)};
 
     &::placeholder {
-        visibility: ${(props) => (props.promo ? "visible" : "hidden")};
+        visibility: hidden;
     }
 
     &:focus {

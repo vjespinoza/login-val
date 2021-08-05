@@ -10,13 +10,29 @@ import {
     Action,
     QtyInput,
     QtyButton,
+    SummaryDetails,
+    SummaryHeader,
+    OrderShipping,
+    OrderPromo,
+    SummaryTotal,
+    Checkout,
 } from "./shoppingCart.style";
+import { Input } from "./../../shared/Input";
+import { Select } from "./../../shared/select";
+import { Button } from "./../../shared/Button";
 import { Trash, Dash, Plus } from "@styled-icons/bootstrap";
 import { Link } from "react-router-dom";
 import useCart from "./../../../hooks/useCart";
 
 const ShoppingCart = ({ cart, setCart }) => {
-    const { handleEmptyCart, handleRemoveItem, handleQuantity } = useCart({
+    const {
+        total,
+        handleEmptyCart,
+        handleRemoveItem,
+        handleQuantity,
+        orderAddons,
+        handleOrderAddons,
+    } = useCart({
         cart,
         setCart,
     });
@@ -35,7 +51,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                     </EmptyCart>
                 ) : (
                     <>
-                        <CartHeader>
+                        <CartHeader details>
                             <h2>Carrito de Compras</h2>
                             <h2>{cart.length} artículos</h2>
                         </CartHeader>
@@ -68,7 +84,6 @@ const ShoppingCart = ({ cart, setCart }) => {
                                                 </span>
                                             </div>
                                         </section>
-                                        {/* <section>{item.quantity}</section> */}
                                         <section>
                                             <Action>
                                                 <QtyButton
@@ -132,7 +147,48 @@ const ShoppingCart = ({ cart, setCart }) => {
                     </>
                 )}
             </CartDetails>
-            <OrderSummary></OrderSummary>
+            <OrderSummary>
+                <CartHeader>
+                    <h2>Resumen de la orden</h2>
+                </CartHeader>
+                <SummaryDetails>
+                    <SummaryHeader>
+                        <h4>{cart.length} artículos</h4>
+                        <h4>Sub-Total: ${total}</h4>
+                    </SummaryHeader>
+                    <OrderShipping>
+                        <h4>Envío:</h4>
+                        <Select
+                            id="shipping"
+                            name="shipping"
+                            onChange={(e) => handleOrderAddons(e)}
+                        >
+                            <option value="0">
+                                Gratis (7 - 10 días) ** $0
+                            </option>
+                            <option value="5">
+                                Standard (3 - 5 días) ** $5
+                            </option>
+                            <option value="10">Premium (1 día) ** $10</option>
+                        </Select>
+                    </OrderShipping>
+                    <OrderPromo>
+                        <h4>Promo: (-5%)</h4>
+                        <Input
+                            bgColor
+                            promo
+                            type="text"
+                            placeholder="Ingresa tu código"
+                            onChange={(e) => handleOrderAddons(e)}
+                            name="promo"
+                            value={orderAddons.promo}
+                        />
+                        <Button primary>Aplicar Promo</Button>
+                    </OrderPromo>
+                </SummaryDetails>
+                <SummaryTotal></SummaryTotal>
+                <Checkout></Checkout>
+            </OrderSummary>
         </CartWrapper>
     );
 };

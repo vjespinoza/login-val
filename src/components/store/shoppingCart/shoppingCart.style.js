@@ -7,6 +7,15 @@ export const CartWrapper = styled.div`
     width: 100vw;
 `;
 
+export const CartHeader = styled.div`
+    grid-area: ${(props) => (props.details ? "header" : "sum-title")};
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid ${(props) => props.theme.colors.border};
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+`;
+
 /**** CART DETAILS ****/
 export const CartDetails = styled.div`
     display: grid;
@@ -24,15 +33,6 @@ export const CartDetails = styled.div`
     grid-template-rows: 1fr 1fr 9fr 1fr;
     background: #fff;
     padding: 75px;
-`;
-
-export const CartHeader = styled.div`
-    grid-area: header;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid ${(props) => props.theme.colors.border};
-    margin-bottom: 20px;
-    padding-bottom: 20px;
 `;
 
 export const CartProductsHeader = styled.div`
@@ -178,10 +178,6 @@ export const QtyButton = styled.button`
     height: 2rem;
     cursor: pointer;
     text-align: center;
-
-    /* & svg {
-        pointer-events: none;
-    } */
 `;
 
 /**** ORDER SUMMARY ****/
@@ -194,12 +190,43 @@ export const OrderSummary = styled.div`
     right: 0;
     grid-template-areas:
         "sum-title sum-title"
-        "sum-item-count sum-subtotal"
-        "shipping shipping"
-        "promo-code promo-code"
-        "promo-action ."
-        "total-title total-ammount"
+        "summary summary"
+        "sum-total sum-total"
         "checkout checkout";
     grid-template-columns: repeat(2, 1fr);
-    background: ${(props) => props.theme.colors.border};
+    grid-template-rows: 1fr 9fr 1fr 1fr;
+    background: #e9ecef;
+    padding: 75px;
 `;
+
+export const SummaryDetails = styled.div`
+    grid-area: summary;
+    margin: 10px 0;
+    border-bottom: 1px solid ${(props) => props.theme.colors.border};
+`;
+
+export const SummaryHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+`;
+
+export const OrderShipping = styled.div`
+    & h4 {
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin: 30px 0 10px 0;
+    }
+`;
+
+export const OrderPromo = styled.div`
+    & h4 {
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin: 30px 0 10px 0;
+    }
+`;
+
+export const SummaryTotal = styled.div``;
+
+export const Checkout = styled.div``;
