@@ -92,7 +92,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                                                         handleQuantity(e)
                                                     }
                                                     left
-                                                    data-action="minus"
+                                                    data-action="decrease"
                                                     data-origin="cart-item"
                                                     id={item.id}
                                                     disabled={
@@ -113,7 +113,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                                                     onClick={(e) =>
                                                         handleQuantity(e)
                                                     }
-                                                    data-action="plus"
+                                                    data-action="increase"
                                                     data-origin="cart-item"
                                                     id={item.id}
                                                 >

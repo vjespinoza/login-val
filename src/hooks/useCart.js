@@ -26,46 +26,6 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         setCartItem({ ...cartItem, [name]: value });
     };
 
-    const handleQuantity = (e) => {
-        const targetButton = e.currentTarget.dataset.action;
-        const dataOrigin = e.currentTarget.dataset.origin;
-
-        //Edit new item quantity before adding it to cart
-        if (dataOrigin === "new-item") {
-            let newCount = cartItem.quantity;
-            if (targetButton === "increase") {
-                setCartItem({
-                    ...cartItem,
-                    quantity: newCount + 1,
-                });
-            } else if (targetButton === "decrease") {
-                setCartItem({
-                    ...cartItem,
-                    quantity: newCount - 1,
-                });
-            }
-        }
-
-        //Edit quantity of items already added to the cart
-        if (dataOrigin === "cart-item") {
-            let id = parseInt(e.currentTarget.id.slice(-2)) * -1;
-            let cartCount = cart[id].quantity;
-            let copy = cart;
-
-            if (targetButton === "plus") {
-                copy[id] = { ...copy[id], quantity: cartCount + 1 };
-                setCount(copy[id].quantity);
-            } else if (targetButton === "minus") {
-                copy[id] = { ...copy[id], quantity: cartCount - 1 };
-                setCount(copy[id].quantity);
-            }
-
-            setCart(copy);
-
-            sessionStorage.setItem("CART", JSON.stringify(cart));
-        }
-    };
-
     const handleNewItem = (e) => {
         const prodID = e.currentTarget.id;
 
@@ -119,6 +79,43 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         });
 
         setCart(filterItem);
+    };
+
+    const handleQuantity = (e) => {
+        const targetButton = e.currentTarget.dataset.action;
+        const dataOrigin = e.currentTarget.dataset.origin;
+
+        //Edit new item quantity before adding it to cart
+        if (dataOrigin === "new-item") {
+            let newCount = cartItem.quantity;
+            if (targetButton === "increase") {
+                setCartItem({
+                    ...cartItem,
+                    quantity: newCount + 1,
+                });
+            } else if (targetButton === "decrease") {
+                setCartItem({
+                    ...cartItem,
+                    quantity: newCount - 1,
+                });
+            }
+        }
+
+        //Edit quantity of items already added to the cart
+        if (dataOrigin === "cart-item") {
+            let targetAction = e.currentTarget.dataset.action;
+            let target = e.currentTarget.id;
+            let index = cart.findIndex((x) => x.id === target);
+            let counter = cart[index].quantity;
+
+            if (targetAction === "increase") {
+                cart[index] = { ...cart[index], quantity: counter + 1 };
+                setCount(cart[index].quantity);
+            } else if (targetAction === "decrease") {
+                cart[index] = { ...cart[index], quantity: counter - 1 };
+                setCount(cart[index].quantity);
+            }
+        }
     };
 
     const handleOrderAddons = (e) => {
