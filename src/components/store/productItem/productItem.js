@@ -20,6 +20,7 @@ import {
     AddConfirm,
 } from "./productItem.style";
 import { Plus, Dash, ChevronRight, BagCheck } from "@styled-icons/bootstrap";
+import Swal from "sweetalert";
 import useCart from "./../../../hooks/useCart";
 
 const ProductItem = ({ shoe, cart, setCart }) => {
@@ -40,6 +41,19 @@ const ProductItem = ({ shoe, cart, setCart }) => {
 
     const toggleAction = () => {
         setShowAction((showAction) => !showAction);
+    };
+
+    const checkSize = (e) => {
+        !cartItem.size
+            ? Swal({
+                  title: "Elige una talla",
+                  text: "Por favor selecciona la talla de tu tenis",
+                  icon: "warning",
+              })
+            : (() => {
+                  toggleAction();
+                  handleNewItem(e, cartItem.size);
+              })();
     };
 
     // const rotateCard = () => {
@@ -66,8 +80,10 @@ const ProductItem = ({ shoe, cart, setCart }) => {
                     id={`price-${shoe.id}`}
                     data-item-price={`${shoe.price}`}
                 >
-                    <sup>$</sup>
-                    {shoe.price}
+                    {shoe.price.toLocaleString("en", {
+                        style: "currency",
+                        currency: "USD",
+                    })}
                 </ProductPrice>
                 <ProductName id={`name-${shoe.id}`}>{shoe.name}</ProductName>
                 <ProductModel id={`model-${shoe.id}`}>
@@ -88,8 +104,10 @@ const ProductItem = ({ shoe, cart, setCart }) => {
                                         id={`input-${shoe.id}-${i}`}
                                         key={`input-${shoe.id}-${i}`}
                                         type="radio"
-                                        onChange={(e) => handleRadioSelect(e)}
-                                        // name={shoe.id}
+                                        onChange={(e) => {
+                                            handleRadioSelect(e);
+                                            toggleSize();
+                                        }}
                                         name="size"
                                         value={size}
                                     ></input>
@@ -134,10 +152,7 @@ const ProductItem = ({ shoe, cart, setCart }) => {
                     showAction={showAction}
                     noMargin
                     sFont
-                    onClick={(e) => {
-                        toggleAction();
-                        handleNewItem(e);
-                    }}
+                    onClick={(e) => checkSize(e)}
                     id={shoe.id}
                 >
                     Agregar al carrito

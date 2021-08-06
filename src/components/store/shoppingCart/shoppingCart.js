@@ -74,6 +74,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                                             <div className="productInfoText">
                                                 <h4>{item.name}</h4>
                                                 <p>{item.model}</p>
+                                                <p>Talla: {item.size}</p>
                                                 <span className="trashIcon">
                                                     <Trash
                                                         onClick={(e) =>
@@ -123,16 +124,23 @@ const ShoppingCart = ({ cart, setCart }) => {
                                         </section>
                                         <section className="price">
                                             <p>
-                                                <sup>$</sup>
-                                                {item.price}
+                                                {item.price.toLocaleString(
+                                                    "en",
+                                                    {
+                                                        style: "currency",
+                                                        currency: "USD",
+                                                    }
+                                                )}
                                             </p>
                                         </section>
                                         <section className="total">
                                             <p>
-                                                <sup>$</sup>
                                                 {(
                                                     item.quantity * item.price
-                                                ).toFixed(2)}
+                                                ).toLocaleString("en", {
+                                                    style: "currency",
+                                                    currency: "USD",
+                                                })}
                                             </p>
                                             <span className="total-mobile">
                                                 Total:{" "}
@@ -158,7 +166,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                 <SummaryDetails>
                     <SummaryHeader>
                         <h4>{cart.length} artículos</h4>
-                        <h4>${total.subTotal}</h4>
+                        <h4>{total.subTotal}</h4>
                     </SummaryHeader>
                     <OrderShipping>
                         <h4>Envío:</h4>
@@ -194,7 +202,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                 </SummaryDetails>
                 <SummaryTotal>
                     <h4>Total:</h4>
-                    <h4>${total.bigTotal}</h4>
+                    <h4>{total.bigTotal}</h4>
                 </SummaryTotal>
                 <Checkout>
                     <Button>Checkout</Button>

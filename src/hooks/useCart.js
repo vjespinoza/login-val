@@ -26,7 +26,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         setCartItem({ ...cartItem, [name]: value });
     };
 
-    const handleNewItem = (e) => {
+    const handleNewItem = (e, size) => {
         const prodID = e.currentTarget.id;
 
         setCartItem({
@@ -36,7 +36,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
             name: document.getElementById(`name-${prodID}`).innerHTML,
             model: document.getElementById(`model-${prodID}`).innerHTML,
             seller: document.getElementById(`seller-${prodID}`).innerHTML,
-            size: "",
+            size: "" || size,
             price: parseFloat(
                 document.getElementById(`price-${prodID}`).dataset.itemPrice
             ),
@@ -115,6 +115,8 @@ const useCart = ({ cart, setCart, setShowAction }) => {
                 cart[index] = { ...cart[index], quantity: counter - 1 };
                 setCount(cart[index].quantity);
             }
+
+            sessionStorage.setItem("CART", JSON.stringify(cart));
         }
     };
 
@@ -173,8 +175,14 @@ const useCart = ({ cart, setCart, setShowAction }) => {
                 sum + parseFloat(orderAddons.shipping) - applyDiscount;
 
             setTotal({
-                subTotal: sum.toFixed(2),
-                bigTotal: bigTotal.toFixed(2),
+                subTotal: sum.toLocaleString("en", {
+                    style: "currency",
+                    currency: "USD",
+                }),
+                bigTotal: bigTotal.toLocaleString("en", {
+                    style: "currency",
+                    currency: "USD",
+                }),
             });
         } else {
             setTotal({ subTotal: 0, bigTotal: 0 });
@@ -196,8 +204,8 @@ const useCart = ({ cart, setCart, setShowAction }) => {
     }, [cartItem]);
 
     return {
-        cartItem,
         total,
+        cartItem,
         setCartItem,
         handleNewItem,
         handleRadioSelect,
