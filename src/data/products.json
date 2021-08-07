@@ -7,7 +7,8 @@
         "seller": "Nike",
         "image": "Nike-Men-1.jpg",
         "sizes": [8, 8.5, 9, 9.5, 10, 10.5, 11],
-        "tags": ["Hombre", "Running", "Fitness"] 
+        "tags": ["Hombre", "Running", "Fitness"], 
+        "gender": "men"
 
     },
     {
@@ -18,7 +19,8 @@
         "seller": "Nike",
         "image": "Nike-Men-2.jpg",
         "sizes": [7.5, 8, 8.5, 9, 9.5, 10],
-        "tags": ["Hombre", "Atletismo"] 
+        "tags": ["Hombre", "Atletismo"],
+        "gender": "men"
 
     },
     {
@@ -29,7 +31,8 @@
         "seller": "Nike",
         "image": "Nike-Men-3.jpg",
         "sizes": [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12],
-        "tags": ["Hombre", "Fitness", "Atletismo"] 
+        "tags": ["Hombre", "Fitness", "Atletismo"],
+        "gender": "men"
 
     },
     {
@@ -40,7 +43,8 @@
         "seller": "Nike",
         "image": "Nike-Men-4.jpg",
         "sizes": [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12],
-        "tags": ["Hombre", "Running", "Atletismo"] 
+        "tags": ["Hombre", "Running", "Atletismo"],
+        "gender": "men"
 
     },
     {
@@ -51,7 +55,8 @@
         "seller": "Nike",
         "image": "Nike-Men-5.jpg",
         "sizes": [9, 9.5, 10, 10.5, 11],
-        "tags": ["Hombre", "Running", "Fitness", "Atletismo"] 
+        "tags": ["Hombre", "Running", "Fitness", "Atletismo"],
+        "gender": "men"
 
     },
     {
@@ -62,7 +67,8 @@
         "seller": "Nike",
         "image": "Nike-Women-1.jpg",
         "sizes": [5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9],
-        "tags": ["Mujer", "Running", "Fitness"] 
+        "tags": ["Mujer", "Running", "Fitness"],
+        "gender": "women"
 
     },
     {
@@ -73,7 +79,8 @@
         "seller": "Nike",
         "image": "Nike-Women-2.jpg",
         "sizes": [6, 6.5, 7, 7.5, 8, 8.5],
-        "tags": ["Mujer", "Fitness", "Caminata"] 
+        "tags": ["Mujer", "Fitness", "Caminata"], 
+        "gender": "women"
 
     },
     {
@@ -84,7 +91,8 @@
         "seller": "Nike",
         "image": "Nike-Women-3.jpg",
         "sizes": [6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10],
-        "tags": ["Mujer", "Fashion", "Caminata"] 
+        "tags": ["Mujer", "Fashion", "Caminata"], 
+        "gender": "women"
 
     },
     {
@@ -95,7 +103,8 @@
         "seller": "Nike",
         "image": "Nike-Women-4.jpg",
         "sizes": [5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9],
-        "tags": ["Mujer", "Fitness", "Fashion"] 
+        "tags": ["Mujer", "Fitness", "Fashion"], 
+        "gender": "women"
 
     },
     {
@@ -106,6 +115,7 @@
         "seller": "Nike",
         "image": "Nike-Women-5.jpg",
         "sizes": [5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5],
-        "tags": ["Mujer", "Running", "Fitness", "Atletismo"] 
+        "tags": ["Mujer", "Running", "Fitness", "Atletismo"],
+        "gender": "women"
     }
 ]

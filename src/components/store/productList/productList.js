@@ -1,11 +1,21 @@
-import products from "../../../data/products.json";
+import { useState, useEffect } from "react";
 import ProductItem from "./../productItem/productItem";
 import { StoreContainer } from "./productList.style";
+import useFilterProducts from "../../../hooks/useFilterProducts";
 
 const ProductList = ({ cart, setCart }) => {
+    const { filter, filterChoice } = useFilterProducts();
+    const [list, setList] = useState([]);
+
+    useEffect(() => {
+        let dataCopy = filter;
+
+        setList(dataCopy);
+    }, [filter, filterChoice]);
+
     return (
         <StoreContainer>
-            {products.map((shoe) => {
+            {list.map((shoe) => {
                 return (
                     <ProductItem
                         key={shoe.id}

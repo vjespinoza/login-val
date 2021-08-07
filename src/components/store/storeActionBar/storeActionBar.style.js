@@ -1,27 +1,30 @@
 import styled from "styled-components";
+import { Select } from "./../../shared/select";
 
 export const ActionBar = styled.nav`
+    position: relative;
     display: flex;
-    width: 90%;
-    min-width: 300px;
-    max-width: 1060px;
-    height: 3.5rem;
+    width: 100%;
+    max-width: 320px;
+    height: 3rem;
     margin: 115px 0 50px 0;
-    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+
+    & svg {
+        position: absolute;
+        top: 0.8rem;
+        left: 0;
+        pointer-events: none;
+    }
 
     @media (max-width: 360px) {
-        display: none;
+        margin: 30px 0 40px 0;
     }
 `;
 
-export const MobileFilter = styled.nav`
-    display: none;
-
-    @media (max-width: 360px) {
-        display: block;
-        margin: 20px 0 20px 80%;
-        padding: 5px;
-        cursor: pointer;
-        border: 1px solid ${(props) => props.theme.colors.font};
-    }
+export const ProductFilter = styled(Select)`
+    padding-left: 25px;
+    margin: 0;
+    height: 100%;
+    cursor: pointer;
+    font-size: 1rem;
 `;

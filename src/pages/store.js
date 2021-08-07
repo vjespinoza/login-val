@@ -14,7 +14,7 @@ const StorePageContainer = styled(AppContainer)`
 const Store = ({ cart, setCart }) => {
     return (
         <StorePageContainer>
-            <StoreActionBar />
+            <StoreActionBar cart={cart} />
             <ProductList cart={cart} setCart={setCart} />
         </StorePageContainer>
     );
