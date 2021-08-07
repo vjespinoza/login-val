@@ -13,7 +13,7 @@
     },
     {
         "id": "RS-002",
-        "name": "triple mega runner",
+        "name": "alfa mega runner",
         "model": "NM-1541",
         "price": 109.99,
         "seller": "Nike",
@@ -73,7 +73,7 @@
     },
     {
         "id": "RS-007",
-        "name": "tenis lady runner",
+        "name": "boom lady runner",
         "model": "NW-0484",
         "price": 99.99,
         "seller": "Nike",
@@ -85,7 +85,7 @@
     },
     {
         "id": "RS-008",
-        "name": "tenis ultra shadow+",
+        "name": "zoom mega shadow+",
         "model": "NW-8735",
         "price": 101.00,
         "seller": "Nike",

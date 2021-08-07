@@ -2,12 +2,16 @@ import { ActionBar, ProductFilter } from "./storeActionBar.style";
 import { FunnelFill } from "@styled-icons/bootstrap/FunnelFill";
 import useFilterProducts from "./../../../hooks/useFilterProducts";
 
-const StoreActionBar = () => {
-    const { handleFilterChoice } = useFilterProducts();
+const StoreActionBar = ({ prods, setProds, filterChoice, setFilterChoice }) => {
+    const { handleFilterChoice } = useFilterProducts({
+        filterChoice,
+        setFilterChoice,
+        prods,
+        setProds,
+    });
 
     return (
         <>
-            ks
             <ActionBar>
                 <FunnelFill size="18" />
                 <ProductFilter

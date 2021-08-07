@@ -2,12 +2,13 @@ import styled from "styled-components";
 import { Button } from "../../shared/Button";
 
 export const ProductCard = styled.div`
-    display: flex;
+    display: inline-block;
     flex-direction: column;
-    width: 100%;
-    max-width: 320px;
+    width: 320px;
+    height: 500px;
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
-    align-self: center;
+    margin-bottom: 15px;
+
     /* transform: ${(props) =>
         props.rotateCard ? "rotateY(180deg)" : "rotateY(0deg)"};
     -webkit-transform-style: preserve-3d;
