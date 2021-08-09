@@ -23,7 +23,6 @@ const ProductList = ({
 
     useEffect(() => {
         setSorted(sortedList);
-        console.log("load");
         if (sorted.length > 0) {
             let items = sorted.length;
             let magicGrid = new MagicGrid({

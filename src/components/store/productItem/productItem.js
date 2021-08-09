@@ -19,41 +19,22 @@ import {
     AddToCart,
     AddConfirm,
 } from "./productItem.style";
-import { Plus, Dash, ChevronRight, BagCheck } from "@styled-icons/bootstrap";
-import Swal from "sweetalert";
+import { Plus, Dash, BagCheck } from "@styled-icons/bootstrap";
 import useCart from "./../../../hooks/useCart";
 
 const ProductItem = ({ shoe, cart, setCart }) => {
-    const [showSize, setShowSize] = useState(false);
     const [showAction, setShowAction] = useState(false);
 
     const {
         cartItem,
         handleNewItem,
-        handleRadioSelect,
+        handleSizeSelect,
         handleQuantity,
         handleConfirmItem,
     } = useCart({ cart, setCart, setShowAction });
 
-    const toggleSize = () => {
-        setShowSize((showSize) => !showSize);
-    };
-
     const toggleAction = () => {
         setShowAction((showAction) => !showAction);
-    };
-
-    const checkSize = (e) => {
-        !cartItem.size
-            ? Swal({
-                  title: "Elige una talla",
-                  text: "Por favor selecciona la talla de tu tenis",
-                  icon: "warning",
-              })
-            : (() => {
-                  toggleAction();
-                  handleNewItem(e, cartItem.size);
-              })();
     };
 
     // const rotateCard = () => {
@@ -92,79 +73,73 @@ const ProductItem = ({ shoe, cart, setCart }) => {
                 <ProductSeller id={`seller-${shoe.id}`}>
                     Vendedor: {shoe.seller}
                 </ProductSeller>
-                <SizeWrapper showSize={showSize}>
-                    <label onClick={toggleSize}>
-                        Tallas: <ChevronRight size="14" />
-                    </label>
-                    <ProductSize showSize={showSize}>
+                <SizeWrapper showAction={showAction}>
+                    <ProductSize
+                        onChange={(e) => {
+                            handleSizeSelect(e);
+                        }}
+                        id={`input-${shoe.id}`}
+                        name="size"
+                        defaultValue={shoe.sizes[0]}
+                    >
                         {shoe.sizes.map((size, i) => {
                             return (
-                                <div key={`item-${shoe.id}-${i}`}>
-                                    <input
-                                        id={`input-${shoe.id}-${i}`}
-                                        key={`input-${shoe.id}-${i}`}
-                                        type="radio"
-                                        onChange={(e) => {
-                                            handleRadioSelect(e);
-                                            toggleSize();
-                                        }}
-                                        name="size"
-                                        value={size}
-                                    ></input>
-                                    <label
-                                        htmlFor={`input-${shoe.id}-${i}`}
-                                        key={`label-${shoe.id}-${i}`}
-                                        value={size}
-                                    >
-                                        {size}
-                                    </label>
-                                </div>
+                                <option
+                                    key={`item-${shoe.id}-${i}`}
+                                    value={size}
+                                >
+                                    {size}
+                                </option>
                             );
                         })}
                     </ProductSize>
                 </SizeWrapper>
+                <ActionWrapper showAction={showAction}>
+                    <Action>
+                        <QtyButton
+                            onClick={(e) => handleQuantity(e)}
+                            left
+                            data-action="decrease"
+                            data-origin="new-item"
+                        >
+                            <Dash size="18" />
+                        </QtyButton>
+                        <QtyInput
+                            id={`quantity-${shoe.id}`}
+                            type="number"
+                            value={cartItem.quantity}
+                            disabled
+                        />
+                        <QtyButton
+                            onClick={(e) => handleQuantity(e)}
+                            data-action="increase"
+                            data-origin="new-item"
+                        >
+                            <Plus size="18" />
+                        </QtyButton>
+                    </Action>
+                </ActionWrapper>
             </ProductInfo>
-            <ActionWrapper showAction={showAction}>
-                <Action showAction={showAction}>
-                    <QtyButton
-                        onClick={(e) => handleQuantity(e)}
-                        left
-                        data-action="decrease"
-                        data-origin="new-item"
-                    >
-                        <Dash size="18" />
-                    </QtyButton>
-                    <QtyInput
-                        id={`quantity-${shoe.id}`}
-                        type="number"
-                        value={cartItem.quantity}
-                        disabled
-                    />
-                    <QtyButton
-                        onClick={(e) => handleQuantity(e)}
-                        data-action="increase"
-                        data-origin="new-item"
-                    >
-                        <Plus size="18" />
-                    </QtyButton>
-                </Action>
-                <AddToCart
-                    showAction={showAction}
-                    noMargin
-                    sFont
-                    onClick={(e) => checkSize(e)}
-                    id={shoe.id}
-                >
-                    Agregar al carrito
-                </AddToCart>
-                <AddConfirm
-                    onClick={handleConfirmItem}
-                    showAction={showAction}
-                    noMargin
-                >
-                    <BagCheck size="15" />
-                </AddConfirm>
-            </ActionWrapper>
+            <AddToCart
+                showAction={showAction}
+                noMargin
+                sFont
+                onClick={(e) => {
+                    handleNewItem(e);
+                    toggleAction();
+                }}
+                id={shoe.id}
+            >
+                Agregar al carrito
+            </AddToCart>
+            <AddConfirm
+                onClick={handleConfirmItem}
+                showAction={showAction}
+                sFont
+                noMargin
+            >
+                Confirmar <BagCheck size="15" />
+            </AddConfirm>
         </ProductCard>
     );
 };

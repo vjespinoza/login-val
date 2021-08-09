@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { Button } from "../../shared/Button";
+import { Select } from "../../shared/select";
+import { Input } from "../../shared/Input";
 
 export const ProductCard = styled.div`
     display: inline-block;
     flex-direction: column;
     width: 320px;
-    height: 500px;
+    height: 535px;
     box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
     margin-bottom: 15px;
 
@@ -30,10 +32,10 @@ export const ProductInfo = styled.div`
         "name name name name"
         "model model model model"
         "seller seller seller seller"
-        "size size size size";
+        "size size qty qty";
 
     grid-template-columns: repeat(4, 1fr);
-    padding: 20px;
+    padding: 20px 30px;
 `;
 
 export const ImageWrapper = styled.div`
@@ -77,63 +79,29 @@ export const ProductSeller = styled.span`
 export const SizeWrapper = styled.form`
     grid-area: size;
     display: flex;
+    visibility: ${(props) => (props.showAction ? "visible" : "hidden")};
+    transform: ${(props) => (props.showAction ? "scaleY(1)" : "scaleY(0)")};
+    transform-origin: top center;
+    transition: all ease-in-out 200ms;
+    position: relative;
     flex-direction: column;
     padding-top: 20px;
-    position: relative;
+    margin-top: 20px;
 
-    & > label {
-        font-size: 1rem;
-        margin-bottom: 10px;
-        cursor: pointer;
-        width: fit-content;
-    }
-
-    & > label > svg {
-        margin-bottom: 2px;
-        transform: ${(props) =>
-            props.showSize ? "rotate(90deg)" : "rotate(0deg)"};
-        transition: transform ease-in-out 200ms;
+    &::after {
+        content: "Tallas:";
+        position: absolute;
+        width: 100%;
+        top: 5px;
+        left: 0;
     }
 `;
 
-export const ProductSize = styled.fieldset`
+export const ProductSize = styled(Select)`
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    outline: none;
-    border: none;
-    color: ${(props) => (props.showSize ? props.theme.colors.font : "#fff")};
-    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
-    padding: 20px;
-    position: absolute;
-    z-index: 10;
-    top: 50px;
-    left: 0;
-    transform: ${(props) => (props.showSize ? "scale(1)" : "scale(0)")};
-    transform-origin: top left;
-    transition: all ease-in-out 200ms;
-
-    & input {
-        display: none;
-    }
-
-    & input:checked + label {
-        outline: 2px solid ${(props) => props.theme.colors.secondary};
-        color: ${(props) => props.theme.colors.secondary};
-        font-weight: bold;
-    }
-
-    & label {
-        display: block;
-        cursor: pointer;
-        outline: 1px solid
-            ${(props) => (props.showSize ? props.theme.colors.font : "#fff")};
-        padding: 5px 8px;
-        width: 2.5rem;
-        text-align: center;
-        font-size: 0.8rem;
-    }
+    width: 75px;
+    padding: 0 8px;
+    cursor: pointer;
 `;
 
 export const TagWrapper = styled.div`
@@ -149,42 +117,40 @@ export const ProductTag = styled.span`
 `;
 
 export const ActionWrapper = styled.div`
+    grid-area: qty;
     display: flex;
+    visibility: ${(props) => (props.showAction ? "visible" : "hidden")};
+    transform: ${(props) => (props.showAction ? "scaleY(1)" : "scaleY(0)")};
+    transform-origin: top center;
+    transition: all ease-in-out 200ms;
+    justify-content: flex-end;
     width: 100%;
-    justify-content: ${(props) =>
-        props.showAction ? "space-between" : "center"};
-    padding: 0 20px 20px 20px;
+    padding-top: 20px;
     margin-top: 20px;
 `;
 
 export const Action = styled.div`
-    display: ${(props) => (props.showAction ? "flex" : "none")};
+    display: flex;
+    justify-content: center;
     position: relative;
-    justify-content: ${(props) =>
-        !props.showAction ? "space-between" : "center"};
 
     &:after {
-        content: "Cantidad:";
-        display: block;
         position: absolute;
-        top: -70%;
+        content: "Cantidad:";
+        width: 100%;
+        top: -15px;
         left: 0;
     }
 `;
 
-export const QtyInput = styled.input`
+export const QtyInput = styled(Input)`
     text-align: center;
     width: 2rem;
     color: ${(props) => props.theme.colors.font};
     padding-right: 0rem;
-    outline: none;
-    border-top: 1px solid ${(props) => props.theme.colors.border};
-    border-bottom: 1px solid ${(props) => props.theme.colors.border};
-    border-left: none;
-    border-right: none;
-    background-color: transparent;
+    background-color: #fff;
     width: 2rem;
-    height: 2rem;
+    height: 3rem;
     -moz-appearance: textfield;
 
     &::-webkit-outer-spin-button,
@@ -201,13 +167,13 @@ export const QtyInput = styled.input`
 
 export const QtyButton = styled.button`
     outline: none;
-    border: 1px solid #ced4da;
-    border-radius: ${(props) =>
-        props.left ? "500px 0 0 500px" : "0 500px 500px 0"};
-    padding: ${(props) => (props.left ? "0 0 0 5px" : "0 5px 0 0")};
-    background-color: transparent;
+    border-style: none none solid none;
+    border-width: 2px;
+    border-color: ${(props) =>
+        props.ligth ? "white" : props.theme.colors.font};
+    background-color: #fff;
     width: 2rem;
-    height: 2rem;
+    height: 3rem;
     cursor: pointer;
     text-align: center;
 `;
@@ -215,46 +181,28 @@ export const QtyButton = styled.button`
 export const AddToCart = styled(Button)`
     display: ${(props) => (props.showAction ? "none" : "block")};
     background-color: transparent;
-    border-radius: 500px;
     border: 1px solid ${(props) => props.theme.colors.secondary};
     color: ${(props) => props.theme.colors.secondary};
-    padding: 0.5rem;
+    height: 2.5rem;
+    padding: 0 0.8rem;
     box-shadow: none;
     transition: all ease-in-out 200ms;
-
-    /* &:hover {
-    } */
+    margin: 0 auto;
 `;
 
 export const AddConfirm = styled(Button)`
     display: ${(props) => (props.showAction ? "block" : "none")};
     background-color: transparent;
-    border-radius: 500px;
     border: 1px solid ${(props) => props.theme.colors.secondary};
     color: ${(props) => props.theme.colors.secondary};
-    padding: 0.5rem;
+    height: 2.5rem;
+    padding: 0 0.8rem;
     box-shadow: none;
     transition: all ease-in-out 200ms;
     position: relative;
+    margin: 0 auto;
 
-    &:after {
-        content: "Confirmar";
-        display: block;
-        visibility: hidden;
-        position: absolute;
-        top: -100%;
-        left: 50%;
-        padding: 10px;
-        border-radius: 4px;
-        background: #050505;
-        color: #fff;
-        text-transform: capitalize;
-        font-size: 0.7em;
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
-    }
-    &:hover::after {
-        visibility: visible;
-        transition: all ease-in-out;
-        transition-delay: 1000ms;
+    & svg {
+        margin: 0 0 5px 2px;
     }
 `;

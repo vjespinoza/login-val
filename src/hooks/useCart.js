@@ -20,7 +20,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         applyPromo: false,
     });
 
-    const handleRadioSelect = (e) => {
+    const handleSizeSelect = (e) => {
         const { name, value } = e.target;
 
         setCartItem({ ...cartItem, [name]: value });
@@ -36,7 +36,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
             name: document.getElementById(`name-${prodID}`).innerHTML,
             model: document.getElementById(`model-${prodID}`).innerHTML,
             seller: document.getElementById(`seller-${prodID}`).innerHTML,
-            size: "" || size,
+            size: document.getElementById(`input-${prodID}`).value,
             price: parseFloat(
                 document.getElementById(`price-${prodID}`).dataset.itemPrice
             ),
@@ -208,7 +208,7 @@ const useCart = ({ cart, setCart, setShowAction }) => {
         cartItem,
         setCartItem,
         handleNewItem,
-        handleRadioSelect,
+        handleSizeSelect,
         handleQuantity,
         handleConfirmItem,
         handleEmptyCart,

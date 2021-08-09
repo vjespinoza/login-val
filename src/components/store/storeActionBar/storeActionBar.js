@@ -20,7 +20,7 @@ const StoreActionBar = ({ prods, setProds, filterChoice, setFilterChoice }) => {
                     name="filter"
                     onChange={(e) => handleFilterChoice(e)}
                 >
-                    <option value={0} disabled>
+                    <option value={0} disabled hidden>
                         Filtrar por:
                     </option>
                     <option value="aTop">A-Z</option>
