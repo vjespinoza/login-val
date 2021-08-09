@@ -62,7 +62,7 @@ const ShoppingCart = ({ cart, setCart }) => {
                             <h4>Precio</h4>
                             <h4>Total</h4>
                         </CartProductsHeader>
-                        <CartProducts>
+                        <CartProducts id="container">
                             {cart.map((item, i) => {
                                 return (
                                     <article key={i}>
